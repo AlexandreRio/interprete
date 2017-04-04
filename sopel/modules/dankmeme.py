@@ -1,0 +1,30 @@
+# -*- coding: utf-8 -*/
+from sopel import module
+
+@module.rule('.*lenny.*')
+def lenny(bot, trigger):
+  bot.say('( ͡° ͜ʖ ͡°)')
+
+@module.rule('.*shrug.*')
+def shrug(bot, trigger):
+  bot.say('¯\_(ツ)_/¯')
+
+@module.rule('.*dealwithit.*')
+def dealwithit(bot, trigger):
+    bot.say('☞   ͜ʖ  ☞')
+
+@module.rule('.*dwi.*')
+def dwi(bot, trigger):
+    bot.say('(⌐■_■)')
+
+@module.rule('.*kawai.*')
+def kawai(bot, trigger):
+    bot.say('ʢ◉ᴥ◉ʡ')
+
+@module.rule('.*wat.*')
+def wat(bot, trigger):
+    bot.say('( ͡°_ ͡°)')
+
+@module.rule('.*waat.*')
+def waat(bot, trigger):
+    bot.say('staaap!')

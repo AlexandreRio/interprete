@@ -1,0 +1,7 @@
+sopel/*
+
+*.pyc
+
+!sopel/modules/
+
+sopel/modules/__pycache__
