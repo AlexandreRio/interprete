@@ -5,7 +5,7 @@ from sopel import module
 import random
 
 
-@module.commands('perceval,', 'pq')
+@module.commands('perceval', 'pq')
 def perquote(bot, trigger):
     quote = random.choice(tuple(quotes))
     bot.say(quote)
