@@ -28,3 +28,16 @@ def wat(bot, trigger):
 @module.rule('.*waat.*')
 def waat(bot, trigger):
     bot.say('staaap!')
+
+@module.rule('.*gné.*')
+def gne(bot, trigger):
+    bot.say('ヽ(。_°)ノ')
+
+@module.rule('.*ftt.*')
+def ftt(bot, trigger):
+    bot.say('(╯°□°）╯︵ ┻━┻')
+
+@module.rule('.*godwin.*')
+def godwin(bot, trigger):
+    bot.say('\(°n°)')
+
