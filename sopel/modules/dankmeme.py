@@ -1,44 +1,47 @@
 # -*- coding: utf-8 -*/
 from sopel import module
 
-@module.rule('(\W|\A)lenny(\W|\Z)')
+@module.rule('(^| |\.)lenny( |$)')
 def lenny(bot, trigger):
   bot.say('( ͡° ͜ʖ ͡°)')
 
-@module.rule('(\W|\A)shrug(\W|\Z)')
+@module.rule('(^| |\.)shrug( |$)')
 def shrug(bot, trigger):
   bot.say('¯\_(ツ)_/¯')
 
-@module.rule('(\W|\A)dealwithit(\W|\Z)')
+@module.rule('(^| |\.)dealwithit( |$)')
 def dealwithit(bot, trigger):
     bot.say('☞   ͜ʖ  ☞')
 
-@module.rule('(\W|\A)dwi(\W|\Z)')
+@module.rule('(^| |\.)dwi( |$)')
 def dwi(bot, trigger):
     bot.say('(⌐■_■)')
 
-@module.rule('(\W|\A)kawai(\W|\Z)')
+@module.rule('(^| |\.)kawai( |$)')
 def kawai(bot, trigger):
     bot.say('ʢ◉ᴥ◉ʡ')
 
-#I like it when it comes up on overwtach
+#I like it when it comes up on overwtach and other things
 @module.rule('.*wat.*')
 def wat(bot, trigger):
     bot.say('( ͡°_ ͡°)')
 
-@module.rule('(\W|\A)waat(\W|\Z)')
+@module.rule('(^| |\.)waat( |$)')
 def waat(bot, trigger):
     bot.say('staaap!')
 
-@module.rule('(\W|\A)gné(\W|\Z)')
+@module.rule('(^| |\.)gné( |$)')
 def gne(bot, trigger):
     bot.say('ヽ(。_°)ノ')
 
-@module.rule('(\W|\A)ftt(\W|\Z)')
+@module.rule('(^| |\.)ftt( |$)')
 def ftt(bot, trigger):
     bot.say('(╯°□°）╯︵ ┻━┻')
 
-@module.rule('(\W|\A)godwin(\W|\Z)')
+@module.rule('(^| |\.)godwin( |$)')
 def godwin(bot, trigger):
     bot.say('\(°n°)')
 
+@module.rule('(^| |\.)RA+GE( |$)')
+def rage(bot,trigger):
+    bot.say(' ┻━┻︵ \(°□°)/ ︵ ┻━┻')

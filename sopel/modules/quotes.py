@@ -15,6 +15,17 @@ def karquote(bot, trigger):
     quote = random.choice(tuple(quotes_K))
     bot.say(quote)
 
+@module.commands('burgonde', 'bg')
+def burquote(bot, trigger):
+    quote = random.choice(tuple(quotes_B))
+    bot.say(quote)
+
+@module.commands('kadoc', 'kc')
+def kadquote(bot, trigger):
+    quote = random.choice(tuple(quotes_C))
+    bot.say(quote)
+
+
 
 # needed a one file solution, I'm sorry
 # quotes are arranged versions of https://fr.wikiquote.org/wiki/Kaamelott/Perceval
@@ -127,4 +138,53 @@ quotes_K = {
     'Vous dites pas : « Qu’est ce qu\'il fait chaud… », vous dites : « La chaleur est un plat qui se mange froid. »',
     'Les chiffres, c\'est pas une science exacte figurez-vous!Quand je pense à la chance que vous avez de faire partie d\'un clan dirigé par des cerveaux du combat psychologique, qui se saignent...aux quatre parfums du matin au soir !',
     'On va vous envoyer un mec que en fait on dirait qu\'il marche normalement alors qu\'il marche alternativement à cloche pied sur chaque pied alors faites gaffe !'
+}
+
+quotes_B = {
+    'Ah, Biographie ! (Pet)… Biographie…',
+    'Arthour !… Couhillère !',
+    'Interprèèète ? Interprèèète, couhillère ?',
+    'La fleur en bouquet fane, et jamais ne renaît !',
+    'Arthour !… Pas changer assiette pour fromage !',
+    'Couhillère, couhillère, couhillère ! Ave Cesar ! (lache une caisse)',
+    'MÉTÉOOOOOOOOO !',
+    'Troupa ! Troupa ! Troupatroupatroupatroupa ! TROUPA ! HAHAHAHAHAHAHA ! Troupaskaya !',
+    'Arthour ! On est fort en pomme.',
+    'Arthour ! Qu\'est-ce à dire que ceci ? ON EST FORTS ! En pommes…',
+    'Non posso volo, no tépo mayo. Un posso volo, tandolon toulo. Tamasso (pet) tanlamalasso. Tamasso (pet) les oiseaux petits',
+    'Les oiseaux sifflent, le printemps siffle !',
+    'Arthour, j’apprécie les fruits au sirop !''SALSIFIS !!!!!!',
+    'Jouer ! Guerre ! Salsifis !'
+}
+
+quotes_C = {
+    'Pour savoir s’il va y avoir du vent, il faut mettre son doigt dans le cul du coq.',
+    'Ou mettre du beurre dans le fond du plat pour pas que le gratin colle.''Y\'a des méchants ?',
+    'J\'te présente vos hommages au roi Arthur.',
+    'J\'ai le droit d\'être 4 jours pas chez moi, et après chez moi. Mais y a du voyage qui se prépare, et pour soigner les bêtes, y a pas que ma tante, y a moi aussi.',
+    'Pourquoi je peux pas avoir un chien moi ? […] Mais c\'est juste pour mettre des coups de pied dedans ! […] Moi j\'en ai marre de toujours donner des coups de pied aux poules !',
+    'À Kadoc ! À Kadoc !''Tatan, elle fait des flans.',
+    'Les pattes de canaaaaaaaaaaaaaaaaaaaaaaaaaaaaard !',
+    'Elle est où la poulette ?',
+    'Mordu, mordu, mooooordu! Mordu mordu mordu mordu mordu mordu mordu mordu mordu mooooooooooordu !!!!',
+    'Karadoc il s\'occupe, mais c\'est pas ma Tatan ! !',
+    'Il ressemble à Tatan !',
+    'Le caca des pigeons c\'est caca, faut pas manger.',
+    'Pas du tout, les lapins, les lapins, c\'est gentil !',
+    'Le poissooon ! Le petit poissooon !',
+    'Des fois on n\'a pas le choix faut sacrifier des jeunes, c\'est le grand qu\'a dit.',
+    'Dans trois jours, ma tata elle m’emmène à la mer pour me noyer.',
+    'Y vont faire des beignets !',
+    'Quand y\'a plus de roi, c\'est caca.',
+    'Ça suffit ! Elle est où la poulette ? Elle est bien cachée ?',
+    'Vous rendez la poulette sinon c\'est plus vous qui donnez à manger aux lapins !',
+    'Ça suffit !!! Ça suffit !!! Ça suffiiiiiiiit !!!',
+    'Vous rendez la poulette ou c\'est tout nus dans les orties !',
+    'Le caca des canards c\'est caca.',
+    'Il est où Kadoc ? Il est bien caché ?',
+    'Camouflage caca...',
+    'Il faut pas respirer la compote, ça fait tousser.',
+    'Caca''Ça suffit, vous rendez la poulette, sinon papi va se mettre en colère.',
+    'Si Kadoc il surveille bien, il aura des p\'tits cubes de fromage.',
+    'Y sont où les quignons à Kadoc ? Y sont dans la poche? Y sont bien cachés ?'
 }
