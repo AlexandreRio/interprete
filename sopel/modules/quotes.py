@@ -101,6 +101,9 @@ quotes_P = {
     'Y bouffent que des noisettes et des escalopes de veau. Et quand ils vous donnent un coup de bec vous voyez une grande lumière et ça vous donne la diarrhée !',
     'Ouais en même temps ça vous a prouvé qu\'on avait pas froid au ventre !',
     'Nan mais je l\'ai déjà impressionné, moi ! Je lui ai expliqué une nouvelle technique de combat : on se bat à moitié à mains nues, et à moitié avec du calcium. J\'peux vous dire il faisait moins le malin !',
+    'Je sais pas se qui s\'est passé... J\'ai vu tout blanc après tout noir et après deux fois tout blanc.',
+    'Quand j\'étais môme alors là ouais, j\'avais les cheveux longs. Seulement tout le monde m\'appelait Persiflette, ça me faisais pleurer.',
+    'Vers quinze ans je me suis fait un genre de crête à la barbare, bien rasé sur les cotés. Sauf que ma grand-mère elle m\'a pas reconnu. Elle a lâché les chiens. Les chiens non plus ils m\'ont pas reconnu. C\'est passé à ça de la quéquette ! J\'ai encore la cicatrice.',
 }
 
 quotes_K = {
