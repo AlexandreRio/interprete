@@ -25,6 +25,10 @@ def kadquote(bot, trigger):
     quote = random.choice(tuple(quotes_C))
     bot.say(quote)
 
+@module.commands('maitredarmes', 'ma')
+def marquote(bot, trigger):
+    quote = random.choice(tuple(quotes_M))
+    bot.say(quote)
 
 
 # needed a one file solution, I'm sorry
@@ -188,3 +192,25 @@ quotes_C = {
     'Si Kadoc il surveille bien, il aura des p\'tits cubes de fromage.',
     'Y sont où les quignons à Kadoc ? Y sont dans la poche? Y sont bien cachés ?'
 }
+
+
+quotes_M = {
+    'HAHA, Sire ! Je vous attends ! À moins que vous préfériez que l’on dise partout que le roi est une petite pédale qui pisse dans son froc à l’idée de se battre !',
+    'Sire ! Mon père est peut-être unijambiste, mais moi, ma femme n\'a pas de moustache ! […] Alors ça vient? p\'tite bite !',
+    'En garde, espèce de vieille pute dégarnie !',
+    'JE NE MANGE PAS DE GRAINES !',
+    'J\'estime que si on avale l\'équivalent de son poids en viande deux fois par jour, il ne faut pas s\'étonner de ne pas pouvoir mettre un pied devant l\'autre sur un champ de bataille.',
+    'Moi, une fois, j\'étais soûl comme cochon, je me suis fait tatouer "J\'aime le raisin de table" sur la miche droite, et ça y est toujours !',
+    'Non, je veux dire « malade mental », c\'est votre maximum, comme insulte ? Non parce qu\'il va falloir passer le cran au-dessus, mon vieux, parce que sinon, on y est encore demain !',
+    'En garde, ma biquette ! Je vais vous découper le gras du cul, ça vous fera ça de moins à trimbaler !',
+    'Quand on est idiot, on plante des carottes on ne s\'occupe pas de sécurité !''Du nerf, mon lapinou !… Vous allez vous faire tailler le zizi en pointe !',
+    'ALLEZ, EN GARDE GROSSE CONNE ! Non, ça va pas, ça va pas !',
+    'Non mais c\'est à se coincer les parties dans une porte !',
+    'Vous savez quoi, Sire ? On va commencer par se faire une saucisse grillée de trois pieds de long, avec un tonnelet de pinard chacun, et derrière, peut être bien qu\'on se paiera des filles. Ah oui ! A un moment, vive la vie !',
+    'Mais allez-y bon sang, magnez-vous le fion, espèce de grosse dinde !',
+    'Je commence à en avoir ras le bol de votre comportement de péteux alors vous allez me faire le plaisir de me faire une bonne insulte et de vous foutre en rogne une bonne fois pour toutes!',
+    'Euh, juste une chose... Manquez encore une seule fois de respect au futur roi de Bretagne, et je vous coupe les boules ! Ca vous fera une jolie petite sacoche pour ranger vos dés à coudre.',
+    'Je suis, je suis, je suis une petite tapette, qui parle à tort et à travers, sans que personne ne lui demande son avis, alors elle ferme son bec la poupoule... Et elle laisse parler les grands garçons.',
+    'Regardez moi la jolie petite paire de fillettes, si c\'est pas fragile!',
+}
+
