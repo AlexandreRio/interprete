@@ -11,7 +11,7 @@ def perquote(bot, trigger):
     bot.say(quote)
 
 @module.commands('karadoc', 'kd')
-def perquote(bot, trigger):
+def karquote(bot, trigger):
     quote = random.choice(tuple(quotes_K))
     bot.say(quote)
 
@@ -93,38 +93,38 @@ quotes_P = {
 }
 
 quotes_K = {
-    'On construit un barrage, après on lance de la caillasse de l\'autre côté de la rivière pour faire croire aux autres qu\'on a traversé dans l\'autre sens. Une fois qu\'ils sont au milieu, on casse le barrage et on les noie. Ouais... le seul problème c\'est que quand on a passé quatre semaines à construire un barrage, ça fait un peu mal au cul d\'le détruire...'
-    'Mais y a rien à développer ! C\'est de la merde, c\'est de la merde, c\'est tout ! Moi, on me sert ça dans une auberge, le tavernier, il s\'prend une quiche dans sa tête !'
-    'Ce pain-là, il est cuit trop vite dans un four trop chaud ; la montée n\'a pas le temps de se faire et il y a trop d\'air dans la mie. […] C\'est de la merde.'
-    'L\'agneau était daubé du cul !'
-    'Eh oui mémé, t\'es bien mouchée!'
-    'Par exemple, vous prenez aujourd’hui. Vous comptez sept jours. Ça vous emmène dans une semaine. Et bien on sera exactement le même jour qu’aujourd’hui… À une vache près, hein… C’est pas une science exacte.'
-    'Des p\'tits croutons tout vieux genre pour les lapins ? Ouais j\'savais pas c\'que c\'était, dans le doute j\'les ai bouffés.'
-    'La politique de l\'autruche, c\'est une politique qui court vite, une politique qui fait des gros œufs, c\'est tout.'
-    'Les chicots, c\'est sacré ! Parce que si j\'les lave pas maintenant, dans dix ans, c\'est tout à la soupe. Et l\'mec qui me fera manger de la soupe il est pas né !'
-    'Si ça peut m\'éviter de chlinguer du cul, je peux bien me tremper une ou deux fois par an.'
-    'Qu’est-ce que c’est que ce style de bouffer des petits machins tout secs et trois gallons de flotte par jour ? […] Si la jeunesse se met à croire à ces conneries, on se dirige tout droit vers une génération de dépressifs ! Le gras, c’est la vie.'
-    'Sire ! Enfin vous arrivez pour me sauver. […] De l’hypolipémie ! J’ai plus de gras dans le sang. Je vais me mettre à peler et à perdre mes cheveux…'
-    'Ça y est… je vois trouble. C’est le manque de gras, je me dessèche.'
-    'Vous nous utilisez bon gré malgré pour arriver sur la fin.'
-    'Le Graal par ci, le Graal par là. Le Graal par ci, le Graal par là. Le Graal par ci, le Graal par là. Le Graal par ci, le Graal par là...'
-    'Mon frère, il peut pas aller à l\'école. Quand on lui explique un machin technique, il s\'évanouit.'
-    'C\'est normal, c\'est en se cassant la gueule qu\'on apprend à marcher. Combien de fois j\'ai failli m\'étouffer avec un os de lapin. Il faut jamais se laisser abattre par un échec, c\'est ça le secret.'
-    'Oh le con! Mais il est pas fini d\'affiner!'
-    'La neige qui poudroie dans la solitude de notre enfance. Qu\'est ce que vous dites de ça ?'
-    'On tombe sur le fric, comme ça, du premier coup ! On s\'est même pas fait un cor au pied !'
-    'Cette histoire de Graal, ça a assez traîné ! […] Si c’est pas moi qui prend les choses en main, on y est encore dans cent piges… […] Préparez la fiesta, j’suis un héros !'
-    'Parce que d\'un point de vue santé publique, il vaut mieux bouffer ça une fois par mois que de la merde tous les jours. Je vais vous dire, à ce niveau là, c\'est plus de la gastronomie, c\'est de l\'érotisme.'
-    'La joie de vivre et le jambon, y\'a pas trente-six recettes du bonheur !'
-    'Parce que mon couteau pour le pâté, euuh, y\'a rien à faire, jm\'en tape.'
-    'Lorsqu\'on le tient par la partie sporadique, ou boulière, le fenouil est un objet redondant.'
-    'Tout à l’heure, on a vu que le chapelet de saucisses n’était pas un objet redondant. Et pourtant, on a pu lui trouver une utilisation périmétrique en s’en servant comme un fouet.'
-    'Là, y’a les méduses, les insectes. Là, y’a les glandus, les grouillots. Là, y’a les mecs normaux. Là, y’a les chevaliers. Là, y’a les rois et les princes. Et après, bien au-dessus, y’a le Roi Arthur. Vous, vous aurez eu deux bonhommes dans votre vie, eh ben vous pourrez dire que vous avez tapé dans l’exception.'
-    'Allez, faites-vous belle, que j\'me pointe avec la came présentable.'
-    'Ma femme… mon ex-femme… C’était peut être un peu moins prestige parce qu’elle est pas reine… mais au moins, elle habitait pas à six heures de marche avec un autre mec.'
-    'C\'est pas que c\'est difficile de la récupérer... C\'est que c\'est sa mère difficile de la récupérer, la race de sa grand-mère !'
-    'Du passé faisons table en marbre.'
-    'Vous dites pas : « Qu’est ce qu\'il fait chaud… », vous dites : « La chaleur est un plat qui se mange froid. »'
-    'Les chiffres, c\'est pas une science exacte figurez-vous!Quand je pense à la chance que vous avez de faire partie d\'un clan dirigé par des cerveaux du combat psychologique, qui se saignent...aux quatre parfums du matin au soir !'
+    'On construit un barrage, après on lance de la caillasse de l\'autre côté de la rivière pour faire croire aux autres qu\'on a traversé dans l\'autre sens. Une fois qu\'ils sont au milieu, on casse le barrage et on les noie. Ouais... le seul problème c\'est que quand on a passé quatre semaines à construire un barrage, ça fait un peu mal au cul d\'le détruire...',
+    'Mais y a rien à développer ! C\'est de la merde, c\'est de la merde, c\'est tout ! Moi, on me sert ça dans une auberge, le tavernier, il s\'prend une quiche dans sa tête !',
+    'Ce pain-là, il est cuit trop vite dans un four trop chaud ; la montée n\'a pas le temps de se faire et il y a trop d\'air dans la mie. […] C\'est de la merde.',
+    'L\'agneau était daubé du cul !',
+    'Eh oui mémé, t\'es bien mouchée!',
+    'Par exemple, vous prenez aujourd’hui. Vous comptez sept jours. Ça vous emmène dans une semaine. Et bien on sera exactement le même jour qu’aujourd’hui… À une vache près, hein… C’est pas une science exacte.',
+    'Des p\'tits croutons tout vieux genre pour les lapins ? Ouais j\'savais pas c\'que c\'était, dans le doute j\'les ai bouffés.',
+    'La politique de l\'autruche, c\'est une politique qui court vite, une politique qui fait des gros œufs, c\'est tout.',
+    'Les chicots, c\'est sacré ! Parce que si j\'les lave pas maintenant, dans dix ans, c\'est tout à la soupe. Et l\'mec qui me fera manger de la soupe il est pas né !',
+    'Si ça peut m\'éviter de chlinguer du cul, je peux bien me tremper une ou deux fois par an.',
+    'Qu’est-ce que c’est que ce style de bouffer des petits machins tout secs et trois gallons de flotte par jour ? […] Si la jeunesse se met à croire à ces conneries, on se dirige tout droit vers une génération de dépressifs ! Le gras, c’est la vie.',
+    'Sire ! Enfin vous arrivez pour me sauver. […] De l’hypolipémie ! J’ai plus de gras dans le sang. Je vais me mettre à peler et à perdre mes cheveux…',
+    'Ça y est… je vois trouble. C’est le manque de gras, je me dessèche.',
+    'Vous nous utilisez bon gré malgré pour arriver sur la fin.',
+    'Le Graal par ci, le Graal par là. Le Graal par ci, le Graal par là. Le Graal par ci, le Graal par là. Le Graal par ci, le Graal par là...',
+    'Mon frère, il peut pas aller à l\'école. Quand on lui explique un machin technique, il s\'évanouit.',
+    'C\'est normal, c\'est en se cassant la gueule qu\'on apprend à marcher. Combien de fois j\'ai failli m\'étouffer avec un os de lapin. Il faut jamais se laisser abattre par un échec, c\'est ça le secret.',
+    'Oh le con! Mais il est pas fini d\'affiner!',
+    'La neige qui poudroie dans la solitude de notre enfance. Qu\'est ce que vous dites de ça ?',
+    'On tombe sur le fric, comme ça, du premier coup ! On s\'est même pas fait un cor au pied !',
+    'Cette histoire de Graal, ça a assez traîné ! […] Si c’est pas moi qui prend les choses en main, on y est encore dans cent piges… […] Préparez la fiesta, j’suis un héros !',
+    'Parce que d\'un point de vue santé publique, il vaut mieux bouffer ça une fois par mois que de la merde tous les jours. Je vais vous dire, à ce niveau là, c\'est plus de la gastronomie, c\'est de l\'érotisme.',
+    'La joie de vivre et le jambon, y\'a pas trente-six recettes du bonheur !',
+    'Parce que mon couteau pour le pâté, euuh, y\'a rien à faire, jm\'en tape.',
+    'Lorsqu\'on le tient par la partie sporadique, ou boulière, le fenouil est un objet redondant.',
+    'Tout à l’heure, on a vu que le chapelet de saucisses n’était pas un objet redondant. Et pourtant, on a pu lui trouver une utilisation périmétrique en s’en servant comme un fouet.',
+    'Là, y’a les méduses, les insectes. Là, y’a les glandus, les grouillots. Là, y’a les mecs normaux. Là, y’a les chevaliers. Là, y’a les rois et les princes. Et après, bien au-dessus, y’a le Roi Arthur. Vous, vous aurez eu deux bonhommes dans votre vie, eh ben vous pourrez dire que vous avez tapé dans l’exception.',
+    'Allez, faites-vous belle, que j\'me pointe avec la came présentable.',
+    'Ma femme… mon ex-femme… C’était peut être un peu moins prestige parce qu’elle est pas reine… mais au moins, elle habitait pas à six heures de marche avec un autre mec.',
+    'C\'est pas que c\'est difficile de la récupérer... C\'est que c\'est sa mère difficile de la récupérer, la race de sa grand-mère !',
+    'Du passé faisons table en marbre.',
+    'Vous dites pas : « Qu’est ce qu\'il fait chaud… », vous dites : « La chaleur est un plat qui se mange froid. »',
+    'Les chiffres, c\'est pas une science exacte figurez-vous!Quand je pense à la chance que vous avez de faire partie d\'un clan dirigé par des cerveaux du combat psychologique, qui se saignent...aux quatre parfums du matin au soir !',
     'On va vous envoyer un mec que en fait on dirait qu\'il marche normalement alors qu\'il marche alternativement à cloche pied sur chaque pied alors faites gaffe !'
 }
