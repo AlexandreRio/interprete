@@ -54,3 +54,7 @@ def doot(bot,trigger):
 def poot(bot,trigger):
     bot.say(' poot poot les rageux ┌∩┐(‿|‿)┌∩┐ ')
 
+@module.rule('.*uwotm8.*')
+def wtf(bot,trigger):
+    bot.say('( ≖‿≖) ʷᵗᶠ ᵈᶦᵈ ʸᵒᵘ ˢᵃʸ ʸᵒᵘ ᶫᶦᵗᵗᶫᵉ ˢʰᶦᵗ')
+
