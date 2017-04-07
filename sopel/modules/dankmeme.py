@@ -45,3 +45,8 @@ def godwin(bot, trigger):
 @module.rule(r'\bRA+GE\b')
 def rage(bot,trigger):
 bot.say(' ┻━┻︵ \(°□°)/ ︵ ┻━┻')
+
+@module.rule(r'\idkaidwtk\b')
+def no(bot,trigger):
+bot.say(' I don\'t know and I don\'t want to know ╭∩╮')
+
