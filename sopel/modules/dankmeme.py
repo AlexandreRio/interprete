@@ -44,4 +44,13 @@ def godwin(bot, trigger):
 
 @module.rule(r'\bRA+GE\b')
 def rage(bot,trigger):
-bot.say(' ┻━┻︵ \(°□°)/ ︵ ┻━┻')
+    bot.say(' ┻━┻︵ \(°□°)/ ︵ ┻━┻')
+
+@module.rule(r'\bidkaidwtk\b')
+def no(bot,trigger):
+    bot.say(' I don\'t know and I don\'t want to know ╭∩╮')
+
+@module.rule(r'\bdd\b')
+def doot(bot,trigger):
+    bot.say(' doot doot les rageux ╭∩╮（︶︿︶）╭∩╮ ')
+
