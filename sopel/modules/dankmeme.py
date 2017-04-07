@@ -51,6 +51,6 @@ def doot(bot,trigger):
     bot.say(' doot doot les rageux ╭∩╮（︶︿︶）╭∩╮ ')
 
 @module.rule('.*poot.*')
-def doot(bot,trigger):
+def poot(bot,trigger):
     bot.say(' poot poot les rageux ┌∩┐(‿|‿)┌∩┐ ')
 
