@@ -108,6 +108,13 @@ quotes_P = {
     'Je sais pas se qui s\'est passé... J\'ai vu tout blanc après tout noir et après deux fois tout blanc.',
     'Quand j\'étais môme alors là ouais, j\'avais les cheveux longs. Seulement tout le monde m\'appelait Persiflette, ça me faisais pleurer.',
     'Vers quinze ans je me suis fait un genre de crête à la barbare, bien rasé sur les cotés. Sauf que ma grand-mère elle m\'a pas reconnu. Elle a lâché les chiens. Les chiens non plus ils m\'ont pas reconnu. C\'est passé à ça de la quéquette ! J\'ai encore la cicatrice.',
+    'Déconnez pas Sire, on est trop à la merci sans rien derrière !',
+    'La superstition c\'est comme ceux qui réparent les fauteuils, faut le que le bois qu\'ils rajoutent soit à peu près comme l\'autre bois sinon ça se voit trop.',
+    'Un mec avec une capuche, un peu agaçant. Bah... qui se voit dans la nuit.',
+    'Si ! Une fois c\'était vrai, un couple de vieux moisis qui m\'avaient jeté des carottes. Nan mais j\'ai jamais raconté à la table ronde ça.',
+    'Il était plutôt de couleur rouge. Non fraise ! Plutôt fraise ! Assez rond, un peu en longueur, assez classe quoi. *LE* bel indice. Mais je l\'ai pas pris avec moi parce que j\'avais plus de place dans mes bagages. Si je devais ramener tous les indices que me filent les vieux, je saurais plus où les foutre ces merdes.',
+    'Mais le vieux, il va pas me filer un panneau, ça va faire con !',
+    'Les angles, c\'est un peuple.',
 }
 
 quotes_K = {
@@ -217,3 +224,5 @@ quotes_M = {
     'Regardez moi la jolie petite paire de fillettes, si c\'est pas fragile!',
 }
 
+# Oh ouais nan mais là, non les yeux quand même c'est dégueu.
+# Bah il y a Attila et un hun, ça fait deux.
