@@ -60,6 +60,9 @@ def sendMessage(user, key, msg):
 
 @module.commands('tell')
 def smstrigger(bot, trigger):
+    # Test if .tell command is valid
+    if len(trigger.split()) != 3: return
+
     clients = bot.memory['smsclients']
     args = trigger.group(2).split()
     nick   = args[0]
