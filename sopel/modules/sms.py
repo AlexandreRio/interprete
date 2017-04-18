@@ -12,7 +12,8 @@ from sopel import module
 import requests
 
 def setup(bot):
-    bot.memory['smsclients'] = {}
+    if not 'smsclients' in bot.memory:
+        bot.memory['smsclients'] = {}
 
 @module.require_privmsg('This is a private command you dumb')
 @module.commands('register')
