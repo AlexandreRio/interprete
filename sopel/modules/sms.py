@@ -9,16 +9,7 @@
 # TODO details
 
 from sopel import module
-from urllib import request
 import requests
-
-class Client():
-    def __init__(self, nick, token):
-        self.nick = None
-        self.tocken = None
-
-    def send(self, sender, msg):
-        pass
 
 def setup(bot):
     bot.memory['smsclients'] = {}
@@ -50,6 +41,12 @@ def register(bot, trigger):
 def addClient(bot, nick, user, key):
     bot.memory['smsclients'][nick] = (user, key)
 
+def readClient(bot, nick):
+    """Return user, key
+    """
+    account = bot.memory['smsclients'][nick]
+    return account[0], account[1]
+
 def sendMessage(user, key, msg):
     BASE_URL = 'https://smsapi.free-mobile.fr/sendmsg'
     params = {
@@ -73,6 +70,6 @@ def smstrigger(bot, trigger):
 
     msg = "From " + chan + ", " + sender + ": " + line
 
-    account = clients[nick]
-    status = sendMessage(account[0], account[1], msg)
+    user, key = readClient(bot, nick)
+    status = sendMessage(user, key, msg)
     #bot.say(str(status))
