@@ -16,8 +16,8 @@ def setup(bot):
         bot.memory['smsclients'] = {}
 
 @module.require_privmsg('This is a private command you dumb')
-@module.commands('register')
-def register(bot, trigger):
+@module.commands('registerfree')
+def registerfreemobile(bot, trigger):
     """Register a free mobile account
     Enable \"Notifications par SMS\" option in your free account
     usage, in private message: .register [user] [key] (e.g. .register 12345876 ZqGhFwMIPeh07W)
@@ -61,7 +61,7 @@ def sendMessage(user, key, msg):
 @module.commands('tell')
 def smstrigger(bot, trigger):
     # Test if .tell command is valid
-    if len(trigger.split()) != 3: return
+    if len(trigger.split()) < 3: return
 
     clients = bot.memory['smsclients']
     args = trigger.group(2).split()
@@ -71,8 +71,12 @@ def smstrigger(bot, trigger):
     line   = ' '.join(args[1:])
     sender = trigger.nick #'Bernie'
     chan   = trigger.sender
+    botn   = bot.nick
 
-    msg = "From " + chan + ", " + sender + ": " + line
+    if trigger.is_privmsg:
+        msg = "From " + sender + ": " + line
+    else:
+        msg = "From " + sender + " on " + chan + ": " + line
 
     user, key = readClient(bot, nick)
     status = sendMessage(user, key, msg)
