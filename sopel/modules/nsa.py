@@ -10,8 +10,9 @@
 
 from sopel import module
 from urllib import request
+import re
 
 @module.commands('nsa')
 def vote(bot, trigger):
     where = request.urlopen("https://whereis.alexrio.fr/").read().decode("utf-8")
-    bot.say("salvatoreG is " + where[4:])
+    bot.say(re.sub(r'^I\'m ', 'salvatoreG is ', re.sub(r'^I ','salvatoreG ', where)))
