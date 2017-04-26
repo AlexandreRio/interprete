@@ -1,7 +1,19 @@
 # -*- coding: utf-8 -*-
 from sopel import module
 
-@module.rule(r".*(?P<price>\b\d+\s*((po|pi[èe]ces?\s+d'or|euros?|dollars?)\b|(\$|€)))")
+currencies = [
+    "po", "pi[èe]ces? d'or", "dollars?", "euros?",
+    "boules?", "balles?", "francs?", "briques?", "patates?",
+    "bucks?", "sesterces?", "ronds?", "centimes?", "cents?",
+    "sacs?", "sous?", "sucres?", "livres?", "vaches?",
+]
+currency_symbs = [r'\$', '€', '£', '¢']
+
+price_regex = r".*(?P<price>\b\d+\s*(({})\b|({})))".format(
+    '|'.join(currencies), '|'.join(currency_symbs))
+
+
+@module.rule(price_regex)
 def deumilcincenpiesdor(bot, trigger):
     price = trigger.group('price')
     bot.say((
