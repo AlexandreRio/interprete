@@ -5,7 +5,7 @@ currencies = [
     "po", "pi[èe]ces? d'or", "dollars?", "euros?",
     "boules?", "balles?", "francs?", "briques?", "patates?",
     "bucks?", "sesterces?", "ronds?", "centimes?", "cents?",
-    "sacs?", "sous?", "sucres?", "livres?",
+    "sacs?", "sous?", "sucres?", "livres?", "vaches?",
 ]
 currency_symbs = [r'\$', '€', '£', '¢']
 
