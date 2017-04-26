@@ -5,3 +5,6 @@ from sopel import module
 def anefe(bot, trigger):
   bot.say('anéfé')
 
+@module.rule('.*anéfé.*')
+def anefe(bot, trigger):
+  bot.say('certes')
