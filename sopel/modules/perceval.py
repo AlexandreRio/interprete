@@ -8,7 +8,7 @@ def apresdemain(bot, trigger):
 
 
 @module.rule(r"et toc\s*!?$")
-def camouflajcaca(bot, trigger):
+def ettoc(bot, trigger):
     bot.say("Remonte ton slibard, Lothard !")
 
 
@@ -19,14 +19,14 @@ def federer(bot, trigger):
         bot.memory['federer'] = 1
 
 
-@module.rule(r"(interprete:\s*)?quoi\s+encore\s*?$")
+@module.rule(r"(interprete:\s*)?quoi\s+encore\s*\??$")
 def federer2(bot, trigger):
     if bot.memory.get('federer') == 1:
         bot.say("Ben j'en ai marre. Ça revient à chaque fois sur le tapis ça.")
         bot.memory['federer'] = 2
 
 
-@module.rule(r"(interprete:\s*)?quoi\s+ça\s*?$")
+@module.rule(r"(interprete:\s*)?quoi\s+ça\s*\??$")
 def federer3(bot, trigger):
     if bot.memory.get('federer') == 2:
         bot.say(
