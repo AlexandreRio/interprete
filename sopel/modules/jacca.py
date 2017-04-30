@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import random
+
 from sopel import module
 
 currencies = [
@@ -15,6 +17,8 @@ price_regex = r".*(?P<price>\b\d+\s*(({})\b|({})))".format(
 
 @module.rule(price_regex)
 def deumilcincenpiesdor(bot, trigger):
+    if random.random() > 0.33:
+        return
     price = trigger.group('price')
     bot.say((
         "{price} ?! Eh... eh... C'est une blague ? {price}, mais où "
