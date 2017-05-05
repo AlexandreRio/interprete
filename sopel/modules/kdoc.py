@@ -6,6 +6,8 @@ from datetime import datetime, timedelta
 from pytz import timezone
 from icalendar import Calendar, Event
 
+from sopel import module
+
 os.environ['TZ'] = 'Europe/Paris'
 remote_cal = "https://kdoc.k0v1.xyz/remote.php/dav/public-calendars/5Q08PCZSSLP9Q2GQ?export"
 local_cal = "calendar.ics"
@@ -17,9 +19,10 @@ def strfdelta(tdelta, fmt):
     d["minutes"], d["seconds"] = divmod(rem, 60)
     return fmt.format(**d)
 
-@module.commands('nsa')
+@module.commands('kdoc')
 def kdoc(bot, trigger):
-    with open(lastseen, 'r+') as f:
+    #FIXME: if not found, should create it
+    with open(".sopel/" + lastseen, 'r+') as f:
         lastget = f.read()
         now = calendar.timegm(datetime.now(timezone('Europe/Paris')).utctimetuple())
         if ( (now - int(lastget)) > 3600):
