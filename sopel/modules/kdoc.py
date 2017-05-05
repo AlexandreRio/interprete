@@ -45,13 +45,13 @@ def kdoc(bot, trigger):
 
             if (type(begin) is not datetime):
                 now = datetime.now(timezone('Europe/Paris')).date()
-                if (timedelta(days=0) < (now - begin) < timedelta(days=5)):
+                if (timedelta(days=0) < (begin - now) < timedelta(days=5)):
                     #should refactor!
-                    s = "* Le " + begin.strftime("%A %d à %Hh%m") +  "(dans " + strfdelta(now-begin,"{days} jours et {hours}h{minutes}") + "): " + component.get('summary')
+                    s = "* Le " + begin.strftime("%A %d à %Hh%m") +  "(dans " + strfdelta(begin-now,"{days} jours et {hours}h et {minutes} minutes") + "): " + component.get('summary')
                     bot.say (s)
             else:
-                if (timedelta(days=0) < (now - begin) < timedelta(days=5)):
-                    s = "* Le " + begin.strftime("%A %d à %Hh%m") +  "(dans " + strfdelta(now-begin,"{days} jours et {hours}h{minutes}") + "): " + component.get('summary')
+                if (timedelta(days=0) < (begin - now) < timedelta(days=5)):
+                    s = "* Le " + begin.strftime("%A %d à %Hh%m") +  "(dans " + strfdelta(begin-now,"{days} jours et {hours}h et {minutes} minutes") + "): " + component.get('summary')
                     bot.say (s)
 
             g.close()
