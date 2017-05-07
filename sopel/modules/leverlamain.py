@@ -11,7 +11,7 @@ def soldat_activate(bot, trigger):
 
 @module.rule(r'.*\bsoldat\b.*')
 def soldat(bot, trigger):
-    soldat_date = soldat.memory.get('soldat_activate_date')
+    soldat_date = bot.memory.get('soldat_activate_date')
     if soldat_date and datetime.now() - timedelta(minutes=15) < soldat_date:
         bot.say("/me lève la main")
 
@@ -24,4 +24,4 @@ def levelamain(bot, trigger):
 @module.rule(r'^interprete: (jacc?add?i|jacca dit|jacques a dit):? '
              r'"?lève la main"?[.! ]*$')
 def jacadilevelamain(bot, trigger):
-    bot.say("/me lève la main")
+    bot.action("lève la main")
