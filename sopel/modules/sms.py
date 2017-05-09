@@ -20,7 +20,7 @@ def setup(bot):
 def registerfreemobile(bot, trigger):
     """Register a free mobile account
     Enable \"Notifications par SMS\" option in your free account
-    usage, in private message: .register [user] [key] (e.g. .register 12345876 ZqGhFwMIPeh07W)
+    usage, in private message: .registerfree [user] [key] (e.g. .register 12345876 ZqGhFwMIPeh07W)
 
     """
     if len(trigger.split()) != 3:
