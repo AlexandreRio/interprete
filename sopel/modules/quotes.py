@@ -115,6 +115,12 @@ quotes_P = {
     'Il était plutôt de couleur rouge. Non fraise ! Plutôt fraise ! Assez rond, un peu en longueur, assez classe quoi. *LE* bel indice. Mais je l\'ai pas pris avec moi parce que j\'avais plus de place dans mes bagages. Si je devais ramener tous les indices que me filent les vieux, je saurais plus où les foutre ces merdes.',
     'Mais le vieux, il va pas me filer un panneau, ça va faire con !',
     'Les angles, c\'est un peuple.',
+    'Ouais ! FAITES PAS TROP LES MALINS PARCE QUE ÇA POURRAIT CHIER DES BULLES DANS PAS LONGTEMPS !',
+    'FUMIERS ! SI VOUS VOULEZ QU\'ON SORTE LES PIEDS DEVANT FAUDRA NOUS PASSER SUR LE CORPS !',
+    'Non mais honnête, d\'accord. Mais si ça doit me faire passer pour un faisant...',
+    'C\'est comme le coup du château hanté, en fait ça à rien à voir avec la forme du château !',
+    'Métaphore, c\'est un truc, il faut pas faire ce que ça dit.',
+    'Avant je disais qu\'il fallait jamais commander un demi poulet dans une auberge. Parce que ça gaspille une moitié de poulet à chaque fois. Ça gaspille pas en fait. Je sais plus comment ça marche, mais il y a une technique.',
 }
 
 quotes_K = {
@@ -151,7 +157,11 @@ quotes_K = {
     'Du passé faisons table en marbre.',
     'Vous dites pas : « Qu’est ce qu\'il fait chaud… », vous dites : « La chaleur est un plat qui se mange froid. »',
     'Les chiffres, c\'est pas une science exacte figurez-vous!Quand je pense à la chance que vous avez de faire partie d\'un clan dirigé par des cerveaux du combat psychologique, qui se saignent...aux quatre parfums du matin au soir !',
-    'On va vous envoyer un mec que en fait on dirait qu\'il marche normalement alors qu\'il marche alternativement à cloche pied sur chaque pied alors faites gaffe !'
+    'On va vous envoyer un mec que en fait on dirait qu\'il marche normalement alors qu\'il marche alternativement à cloche pied sur chaque pied alors faites gaffe !',
+    'La prochaine fois je vous saucissonne comme un Jésus et je vous balance au large !',
+    'MA FEMME ELLE S\'APPELLE REVIENS !',
+    'J\'ai plus de munitions... Hey ! Il reste du pâté dans la chambre de ma femme !',
+    'Pardon. J\'ai voulu faire un soufflé. Il est parti un peu vite.',
 }
 
 quotes_B = {
