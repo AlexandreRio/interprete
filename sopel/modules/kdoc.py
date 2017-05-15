@@ -21,8 +21,7 @@ def strfdelta(tdelta, fmt):
 
 @module.commands('kdoc')
 def kdoc(bot, trigger):
-    #FIXME: if not found, should create it
-    with open(".sopel/" + lastseen, 'r+') as f:
+    with open(".sopel/" + lastseen, 'w+') as f:
         lastget = f.read()
         now = calendar.timegm(datetime.now(timezone('Europe/Paris')).utctimetuple())
         if ( (now - int(lastget)) > 3600):
