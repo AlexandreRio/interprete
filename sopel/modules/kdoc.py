@@ -19,6 +19,11 @@ def strfdelta(tdelta, fmt):
     d["minutes"], d["seconds"] = divmod(rem, 60)
     return fmt.format(**d)
 
+def printEvent(bot, component, begin, now):
+    s = "* Le " + begin.strftime("%A %d à %Hh%m") +  "(dans " + strfdelta(begin-now,"{days} jours et {hours}h et {minutes} minutes") + "): " + component.get('summary') + ", " + component.get('location')
+    bot.say (s)
+
+
 @module.commands('kdoc')
 def kdoc(bot, trigger):
     with open(".sopel/" + lastseen, 'w+') as f:
@@ -37,7 +42,6 @@ def kdoc(bot, trigger):
     g = open(local_cal,'rb')
     gcal = Calendar.from_ical(g.read())
 
-    output = ""
     for component in gcal.walk():
         if component.name == "VEVENT":
             now = datetime.now(timezone('Europe/Paris'))
@@ -47,13 +51,9 @@ def kdoc(bot, trigger):
             if (type(begin) is not datetime):
                 now = datetime.now(timezone('Europe/Paris')).date()
                 if (timedelta(days=0) < (begin - now) < timedelta(days=5)):
-                    #should refactor!
-                    s = "* Le " + begin.strftime("%A %d à %Hh%m") +  "(dans " + strfdelta(begin-now,"{days} jours et {hours}h et {minutes} minutes") + "): " + component.get('summary') + ", " + component.get('location')
-                    bot.say (s)
+                    prentEvent(bot, component, begin, now)
             else:
                 if (timedelta(days=0) < (begin - now) < timedelta(days=5)):
-                    s = "* Le " + begin.strftime("%A %d à %Hh%m") +  "(dans " + strfdelta(begin-now,"{days} jours et {hours}h et {minutes} minutes") + "): " + component.get('summary') + ", " + component.get('location')
-
-                    bot.say (s)
+                    prentEvent(bot, component, begin, now)
 
             g.close()
