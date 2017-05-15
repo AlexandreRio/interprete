@@ -32,6 +32,7 @@ def kdoc(bot, trigger):
         if lastget == '':
             lastget = 0
         if ( (now - int(lastget)) > 3600):
+            bot.say("I'm fetching the latest version of the calendar")
             urllib.request.urlretrieve(remote_cal, local_cal)
             f.seek(0)
             f.write(str(now))
@@ -42,6 +43,7 @@ def kdoc(bot, trigger):
     g = open(local_cal,'rb')
     gcal = Calendar.from_ical(g.read())
 
+    hasPrint = False
     for component in gcal.walk():
         if component.name == "VEVENT":
             now = datetime.now(timezone('Europe/Paris'))
@@ -52,8 +54,13 @@ def kdoc(bot, trigger):
                 now = datetime.now(timezone('Europe/Paris')).date()
                 if (timedelta(days=0) < (begin - now) < timedelta(days=5)):
                     prentEvent(bot, component, begin, now)
+                    hasPrint = True
             else:
                 if (timedelta(days=0) < (begin - now) < timedelta(days=5)):
                     prentEvent(bot, component, begin, now)
+                    hasPrint = True
 
             g.close()
+
+    if not hasPrint:
+        bot.say("No upcoming events, sorry")
