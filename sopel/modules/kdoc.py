@@ -24,6 +24,8 @@ def kdoc(bot, trigger):
     with open(".sopel/" + lastseen, 'w+') as f:
         lastget = f.read()
         now = calendar.timegm(datetime.now(timezone('Europe/Paris')).utctimetuple())
+        if lastget == '':
+            lastget = 0
         if ( (now - int(lastget)) > 3600):
             urllib.request.urlretrieve(remote_cal, local_cal)
             f.seek(0)
