@@ -26,18 +26,21 @@ def printEvent(bot, component, begin, now):
 
 @module.commands('kdoc')
 def kdoc(bot, trigger):
-    with open(".sopel/" + lastseen, 'w+') as f:
-        lastget = f.read()
-        now = calendar.timegm(datetime.now(timezone('Europe/Paris')).utctimetuple())
-        if lastget == '':
-            lastget = 0
-        if ( (now - int(lastget)) > 3600):
-            bot.say("I'm fetching the latest version of the calendar")
-            urllib.request.urlretrieve(remote_cal, local_cal)
+    lastseenpath = ".sopel/" + lastseen
+    lastget = 0
+    if os.path.isfile(lastseenpath):
+        with open(lastseenpath, 'r') as f:
+            lastget = f.read()
+        f.close()
+    now = calendar.timegm(datetime.now(timezone('Europe/Paris')).utctimetuple())
+    if ( (now - int(lastget)) > 3600):
+        bot.say("I'm fetching the latest version of the calendar")
+        urllib.request.urlretrieve(remote_cal, local_cal)
+        with open(lastseenpath, 'w') as f:
             f.seek(0)
             f.write(str(now))
             f.truncate()
-    f.close()
+        f.close()
 
 
     g = open(local_cal,'rb')
@@ -52,13 +55,9 @@ def kdoc(bot, trigger):
 
             if (type(begin) is not datetime):
                 now = datetime.now(timezone('Europe/Paris')).date()
-                if (timedelta(days=0) < (begin - now) < timedelta(days=5)):
-                    prentEvent(bot, component, begin, now)
-                    hasPrint = True
-            else:
-                if (timedelta(days=0) < (begin - now) < timedelta(days=5)):
-                    prentEvent(bot, component, begin, now)
-                    hasPrint = True
+            if (timedelta(days=0) < (begin - now) < timedelta(days=5)):
+                prentEvent(bot, component, begin, now)
+                hasPrint = True
 
             g.close()
 
