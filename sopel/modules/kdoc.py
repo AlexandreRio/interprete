@@ -39,7 +39,7 @@ def kdoc(bot, trigger):
             lastget = f.read()
         f.close()
     now = calendar.timegm(datetime.now(timezone('Europe/Paris')).utctimetuple())
-    if ( (now - int(lastget)) > 3600):
+    if ( (now - int(lastget)) > 120):
         bot.say("I'm fetching the latest version of the calendar")
         urllib.request.urlretrieve(remote_cal, local_cal)
         with open(lastseenpath, 'w') as f:
