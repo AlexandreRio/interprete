@@ -22,19 +22,34 @@ def strfdelta(tdelta, fmt):
     d["minutes"], d["seconds"] = divmod(rem, 60)
     return fmt.format(**d)
 
-def strlocation(component):
-    location = component.get('location')
-    return location if location is not None else ''
+def strmecomponent(component, wat, ifnone=''):
+    rawstr = component.get(wat)
+    if not rawstr.__class__ is list:
+        return rawstr if rawstr is not None else ifnone
+    else:
+        nstr = rawstr.pop()
+        for e in rawstr:
+            nstr = nstr + ", " + e
+        return nstr
 
 def printEvent(bot, component, begin, now):
     location = component.get('location')
     localstr = location if location is not None else ''
-    s = "* Le " + begin.strftime("%A %d à %Hh%m") +  "(dans " + strfdelta(begin-now,"{days} jours et {hours}h et {minutes} minutes") + "): " + component.get('summary') + ", " + strlocation(component)
+    s = "* Le " + begin.strftime("\x02%A %d\x0F à %Hh%m") +  "(dans " + strfdelta(begin-now,"{days} jours et {hours}h et {minutes} minutes") + "): " + strfdetails(component, "\x02\x0304{summary}\x0F, {location} [\x0312{categories}\x03]")
     bot.say (s)
 
 def printAllDayEvent(bot, component, begin, now):
-    s = "* Le " + begin.strftime("%A %d à %Hh%m") +  "(dans " + strfdelta(begin-now,"{days} jours") + "): " + component.get('summary') + ", " + strlocation(component) 
+    s = "* Le " + begin.strftime("\x02%A %d\x0F") +  "(dans " + strfdelta(begin-now,"{days} jours") + "): " + strfdetails(component, "\x02\x0304{summary}\x0F, {location} [\x0312{categories}\x03]")
     bot.say (s)
+
+def strfdetails(component, fmt):
+    d = {"summary":    strmecomponent(component, "summary", "Untitled") }
+    d["location"] =    strmecomponent(component, "location", "somewhere")
+    d["categories"] =  strmecomponent(component, "categories", "Arck didn't do his job")
+    d["uid"] =         strmecomponent(component, "uid")
+    d["sequence"] =    strmecomponent(component, "sequence")
+    d["description"] = strmecomponent(component, "description")
+    return fmt.format(**d)
 
 @module.commands('kdoc')
 def kdoc(bot, trigger):
@@ -65,7 +80,7 @@ def kdoc(bot, trigger):
             begin = component.decoded('dtstart')
             end = component.decoded('dtend')
 
-            # TODO: check for recurring event with RRULE:FEQ=WEEKLY 
+            # TODO: check for recurring event with RRULE:FEQ=WEEKLY
             # 'RRULE' : vRecur({'FREQ' : ['WEEKLY']})
             if (type(begin) is not datetime):
                 now = datetime.now(timezone('Europe/Paris')).date()
