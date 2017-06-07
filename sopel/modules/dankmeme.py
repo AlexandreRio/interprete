@@ -59,6 +59,6 @@ def wtf(bot,trigger):
     bot.say('( ≖‿≖) ʷᵗᶠ ᵈᶦᵈ ʸᵒᵘ ˢᵃʸ ʸᵒᵘ ᶫᶦᵗᵗᶫᵉ ˢʰᶦᵗ')
 
 @module.rule('.*coin.*')
-def poot(bot,trigger):
+def coin(bot,trigger):
     bot.say('( °)<')
 
