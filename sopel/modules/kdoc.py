@@ -35,11 +35,11 @@ def strmecomponent(component, wat, ifnone=''):
 def printEvent(bot, component, begin, now):
     location = component.get('location')
     localstr = location if location is not None else ''
-    s = "* Le " + begin.strftime("\x02%A %d\x0F à %Hh%m") +  "(dans " + strfdelta(begin-now,"{days} jours et {hours}h et {minutes} minutes") + "): " + strfdetails(component, "\x02\x0304{summary}\x0F, {location} [\x0312{categories}\x03]")
+    s = "* Le " + begin.strftime("\x02%A %d\x0F à %Hh%m") +  " (dans " + strfdelta(begin-now,"{days} jours et {hours}h et {minutes} minutes") + "): " + strfdetails(component, "\x02\x0304{summary}\x0F, {location} [\x0312{categories}\x03]")
     bot.say (s)
 
 def printAllDayEvent(bot, component, begin, now):
-    s = "* Le " + begin.strftime("\x02%A %d\x0F") +  "(dans " + strfdelta(begin-now,"{days} jours") + "): " + strfdetails(component, "\x02\x0304{summary}\x0F, {location} [\x0312{categories}\x03]")
+    s = "* Le " + begin.strftime("\x02%A %d\x0F") +  " (dans " + strfdelta(begin-now,"{days} jours") + "): " + strfdetails(component, "\x02\x0304{summary}\x0F, {location} [\x0312{categories}\x03]")
     bot.say (s)
 
 def strfdetails(component, fmt):
