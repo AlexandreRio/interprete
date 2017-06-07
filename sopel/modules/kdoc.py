@@ -22,12 +22,18 @@ def strfdelta(tdelta, fmt):
     d["minutes"], d["seconds"] = divmod(rem, 60)
     return fmt.format(**d)
 
+def strlocation(component):
+    location = component.get('location')
+    return location if location is not None else ''
+
 def printEvent(bot, component, begin, now):
-    s = "* Le " + begin.strftime("%A %d à %Hh%m") +  "(dans " + strfdelta(begin-now,"{days} jours et {hours}h et {minutes} minutes") + "): " + component.get('summary') + ", " + component.get('location')
+    location = component.get('location')
+    localstr = location if location is not None else ''
+    s = "* Le " + begin.strftime("%A %d à %Hh%m") +  "(dans " + strfdelta(begin-now,"{days} jours et {hours}h et {minutes} minutes") + "): " + component.get('summary') + ", " + strlocation(component)
     bot.say (s)
 
 def printAllDayEvent(bot, component, begin, now):
-    s = "* Le " + begin.strftime("%A %d à %Hh%m") +  "(dans " + strfdelta(begin-now,"{days} jours") + "): " + component.get('summary') + ", " + component.get('location')
+    s = "* Le " + begin.strftime("%A %d à %Hh%m") +  "(dans " + strfdelta(begin-now,"{days} jours") + "): " + component.get('summary') + ", " + strlocation(component) 
     bot.say (s)
 
 @module.commands('kdoc')
