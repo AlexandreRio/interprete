@@ -117,6 +117,12 @@ quotes_P = {
     'Il était plutôt de couleur rouge. Non fraise ! Plutôt fraise ! Assez rond, un peu en longueur, assez classe quoi. *LE* bel indice. Mais je l\'ai pas pris avec moi parce que j\'avais plus de place dans mes bagages. Si je devais ramener tous les indices que me filent les vieux, je saurais plus où les foutre ces merdes.',
     'Mais le vieux, il va pas me filer un panneau, ça va faire con !',
     'Les angles, c\'est un peuple.',
+    'Ouais ! FAITES PAS TROP LES MALINS PARCE QUE ÇA POURRAIT CHIER DES BULLES DANS PAS LONGTEMPS !',
+    'FUMIERS ! SI VOUS VOULEZ QU\'ON SORTE LES PIEDS DEVANT FAUDRA NOUS PASSER SUR LE CORPS !',
+    'Non mais honnête, d\'accord. Mais si ça doit me faire passer pour un faisant...',
+    'C\'est comme le coup du château hanté, en fait ça à rien à voir avec la forme du château !',
+    'Métaphore, c\'est un truc, il faut pas faire ce que ça dit.',
+    'Avant je disais qu\'il fallait jamais commander un demi poulet dans une auberge. Parce que ça gaspille une moitié de poulet à chaque fois. Ça gaspille pas en fait. Je sais plus comment ça marche, mais il y a une technique.',
 }
 
 quotes_K = {
@@ -153,7 +159,11 @@ quotes_K = {
     'Du passé faisons table en marbre.',
     'Vous dites pas : « Qu’est ce qu\'il fait chaud… », vous dites : « La chaleur est un plat qui se mange froid. »',
     'Les chiffres, c\'est pas une science exacte figurez-vous!Quand je pense à la chance que vous avez de faire partie d\'un clan dirigé par des cerveaux du combat psychologique, qui se saignent...aux quatre parfums du matin au soir !',
-    'On va vous envoyer un mec que en fait on dirait qu\'il marche normalement alors qu\'il marche alternativement à cloche pied sur chaque pied alors faites gaffe !'
+    'On va vous envoyer un mec que en fait on dirait qu\'il marche normalement alors qu\'il marche alternativement à cloche pied sur chaque pied alors faites gaffe !',
+    'La prochaine fois je vous saucissonne comme un Jésus et je vous balance au large !',
+    'MA FEMME ELLE S\'APPELLE REVIENS !',
+    'J\'ai plus de munitions... Hey ! Il reste du pâté dans la chambre de ma femme !',
+    'Pardon. J\'ai voulu faire un soufflé. Il est parti un peu vite.',
 }
 
 quotes_B = {
@@ -215,7 +225,8 @@ quotes_M = {
     'Moi, une fois, j\'étais soûl comme cochon, je me suis fait tatouer "J\'aime le raisin de table" sur la miche droite, et ça y est toujours !',
     'Non, je veux dire « malade mental », c\'est votre maximum, comme insulte ? Non parce qu\'il va falloir passer le cran au-dessus, mon vieux, parce que sinon, on y est encore demain !',
     'En garde, ma biquette ! Je vais vous découper le gras du cul, ça vous fera ça de moins à trimbaler !',
-    'Quand on est idiot, on plante des carottes on ne s\'occupe pas de sécurité !''Du nerf, mon lapinou !… Vous allez vous faire tailler le zizi en pointe !',
+    'Quand on est idiot, on plante des carottes on ne s\'occupe pas de sécurité !',
+    'Du nerf, mon lapinou !… Vous allez vous faire tailler le zizi en pointe !',
     'ALLEZ, EN GARDE GROSSE CONNE ! Non, ça va pas, ça va pas !',
     'Non mais c\'est à se coincer les parties dans une porte !',
     'Vous savez quoi, Sire ? On va commencer par se faire une saucisse grillée de trois pieds de long, avec un tonnelet de pinard chacun, et derrière, peut être bien qu\'on se paiera des filles. Ah oui ! A un moment, vive la vie !',

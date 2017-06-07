@@ -5,4 +5,4 @@ services:
     restart: on-failure:5
     image: boxbox/sopel:latest
     volumes:
-      - /home/orb/interprete/sopel/:/home/sopel/.sopel
+      - ./sopel/:/home/sopel/.sopel
