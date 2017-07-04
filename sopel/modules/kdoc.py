@@ -90,6 +90,7 @@ def kdoc(bot, trigger):
             else:
                 if (timedelta(days=0) < (begin - now) < timedelta(days=10)):
                     printEvent(bot, component, begin, now)
+                    hasPrint = True
 
 
 
