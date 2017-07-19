@@ -21,5 +21,5 @@ def formats(currencies):
         if currency['percent_change_24h'].startswith('-'):
             parts.append('\x0304{}\x03 : {:.4f}€'.format(currency['symbol'], float(currency['price_eur'])))
         else:
-            parts.append('\x0303{}\x03 : {:.4f}€'.format(currency['symbol'], float(currency['price_eur'])))
+            parts.append('\x0311{}\x03 : {:.4f}€'.format(currency['symbol'], float(currency['price_eur'])))
     return ' | '.join(parts)
