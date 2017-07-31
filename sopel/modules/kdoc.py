@@ -12,7 +12,7 @@ from sopel import module
 os.environ['TZ'] = 'Europe/Paris'
 #TODO: install appropriate locale on the image
 #locale.setlocale(locale.LC_ALL, 'fr_FR.UTF-8')
-remote_cal = "https://kdoc.k0v1.xyz/remote.php/dav/public-calendars/5Q08PCZSSLP9Q2GQ?export"
+remote_cal = "https://kdoc.guiotte.fr/remote.php/dav/public-calendars/5Q08PCZSSLP9Q2GQ?export"
 local_cal = "calendar.ics"
 lastseen = "lastseen.txt"
 
