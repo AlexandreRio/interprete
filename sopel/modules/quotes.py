@@ -121,6 +121,7 @@ quotes_P = {
     'C\'est comme le coup du château hanté, en fait ça à rien à voir avec la forme du château !',
     'Métaphore, c\'est un truc, il faut pas faire ce que ça dit.',
     'Avant je disais qu\'il fallait jamais commander un demi poulet dans une auberge. Parce que ça gaspille une moitié de poulet à chaque fois. Ça gaspille pas en fait. Je sais plus comment ça marche, mais il y a une technique.',
+    'Le tonneau j\'y suis, j\'y reste. C\'est en signe de... Protestation c\'est quand on est pas jouasse ?',
 }
 
 quotes_K = {
