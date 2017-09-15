@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*/
 from sopel import module
+from random import randint
+import time
 
 @module.rule('.*lenny.*')
 def lenny(bot, trigger):
-  bot.say('( ͡° ͜ʖ ͡°)')
+    bot.say('( ͡° ͜ʖ ͡°)')
 
 @module.rule('.*shrug.*')
 def shrug(bot, trigger):
-  bot.say('¯\_(ツ)_/¯')
+    bot.say('¯\_(ツ)_/¯')
 
 @module.rule('.*dealwithit.*')
 def dealwithit(bot, trigger):
@@ -62,3 +64,18 @@ def wtf(bot,trigger):
 def coin(bot,trigger):
     bot.say('( °)<')
 
+@module.commands('fusion')
+def fusion(bot, trigger):
+    bot.say('(☞ﾟ∀ﾟ)☞    ☜(ﾟ∀ﾟ☜)')
+    bot.say('☜(ﾟ∀ﾟ☜)  (☞ﾟ∀ﾟ)☞ ')
+    bot.say('FU')
+    bot.say('(☞ﾟ∀ﾟ)☞☜(ﾟ∀ﾟ☜)')
+    bot.say('SION')
+    time.sleep(2)
+    bot.say('. . .')
+    time.sleep(2)
+    i = 0
+    s = '☜('
+    b = '☞ﾟ∀ﾟ☞ﾟ∀ﾟ☜'
+    ''.join(random.sample(b, len(b)))
+    bot.say(s + ')ᶰʸᵉᶫᶫᵒʷ')
