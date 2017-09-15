@@ -15,6 +15,9 @@ os.environ['TZ'] = 'Europe/Paris'
 remote_cal = "https://kdoc.guiotte.fr/remote.php/dav/public-calendars/5Q08PCZSSLP9Q2GQ?export"
 local_cal = "calendar.ics"
 lastseen = "lastseen.txt"
+edit_url="https://kdoc.guiotte.fr/remote.php/dav/calendars/esir/esir_shared_by_florent/"
+edit_user="esir"
+edit_pass="yackisafaggot"
 
 def strfdelta(tdelta, fmt):
     d = {"days": tdelta.days}
@@ -51,8 +54,15 @@ def strfdetails(component, fmt):
     d["description"] = strmecomponent(component, "description")
     return fmt.format(**d)
 
+@module.commands('kdoc_setup')
+def kdoc_setup(bot, trigger):
+    """Setup informations to edit #esir calendar"""
+    bot.say("To edit the calendar use a CalDAV/iCalendar client with this info:")
+    bot.say("url: " + edit_url + " user: " + edit_user + " pass: " + edit_pass)
+
 @module.commands('kdoc')
 def kdoc(bot, trigger):
+    """Show #esir calendar next events"""
     lastseenpath = ".sopel/" + lastseen
     lastget = 0
     if os.path.isfile(lastseenpath):
