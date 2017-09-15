@@ -64,7 +64,7 @@ def wtf(bot,trigger):
 def coin(bot,trigger):
     bot.say('( °)<')
 
-@module.rule('.fusion')
+@module.commands('fusion')
 def fusion(bot, trigger):
     bot.say('(☞ﾟ∀ﾟ)☞    ☜(ﾟ∀ﾟ☜)')
     bot.say('☜(ﾟ∀ﾟ☜)  (☞ﾟ∀ﾟ)☞ ')
