@@ -11,6 +11,7 @@
 import time
 import requests
 import collections
+import operator
 from sopel import module
 
 _starter = {'EUR' : 10000}
@@ -102,8 +103,20 @@ def high_scores(bot, trigger):
     wallets = bot.memory.get('wallets', {})
     rates = get_rates(bot)
 
-    line = list()
+    scores = dict()
     for player, wallet in wallets.items():
-        line.append(player)
+        totalv = wallet['EUR']
+        for k, v in sorted(wallet.items()):
+            if k is not 'EUR':
+                currency = get_curr(rates, k)
+                value = float(currency['price_eur'])
+                totalv += v * value
+        scores[player] = totalv
+
+    sorted_scores = sorted(scores.items(), key=operator.itemgetter(1), reverse=True)
+
+    line = list()
+    for k, v in sorted_scores:
+        line.append('{}: {}'.format(k, v))
 
     bot.say(' | '.join(line))
