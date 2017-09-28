@@ -62,7 +62,7 @@ def kdoc_setup(bot, trigger):
 
 @module.commands('kdoc')
 def kdoc(bot, trigger):
-    """Show #esir calendar next events"""
+    """Show #esir calendar next events, see .kdoc_setup"""
     lastseenpath = ".sopel/" + lastseen
     lastget = 0
     if os.path.isfile(lastseenpath):
