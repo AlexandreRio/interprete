@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*/
 from sopel import module
-from random import randint
+from random import randint,sample 
 import time
 
 @module.rule('.*lenny.*')
@@ -24,7 +24,7 @@ def kawai(bot, trigger):
     bot.say('ʢ◉ᴥ◉ʡ')
 
 #I like it when it comes up on overwtach and other things
-@module.rule('.*wat.*')
+@module.rule(r'\bwat\b')
 def wat(bot, trigger):
     bot.say('( ͡°_ ͡°)')
 
@@ -77,5 +77,5 @@ def fusion(bot, trigger):
     i = 0
     s = '☜('
     b = '☞ﾟ∀ﾟ☞ﾟ∀ﾟ☜'
-    ''.join(random.sample(b, len(b)))
-    bot.say(s + ')ᶰʸᵉᶫᶫᵒʷ')
+    r = ''.join(sample(b, len(b)))
+    bot.say(s + r + ')ᶰʸᵉᶫᶫᵒʷ')
