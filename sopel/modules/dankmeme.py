@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*/
 from sopel import module
-from random import randint
+import random
 import time
 
 @module.rule('.*lenny.*')
