@@ -21,4 +21,3 @@ Some modules have been by writen by our [community](https://github.com/Alexandre
 | quotes.py         | Prints various quotes from TV shows                                          |
 | sms.py            | Notifies [Free mobile](https://mobile.free.fr) client of new messages by SMS |
 | topic.py          | Warns if topic contains events                                               |
-|-------------------|------------------------------------------------------------------------------|
