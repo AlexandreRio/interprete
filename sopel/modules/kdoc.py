@@ -98,6 +98,7 @@ def kdoc(bot, trigger):
                     printAllDayEvent(bot, component, begin, now)
                     hasPrint = True
             else:
+                begin = begin.astimezone(timezone('Europe/Paris'))
                 if (timedelta(days=0) < (begin - now) < timedelta(days=10)):
                     printEvent(bot, component, begin, now)
                     hasPrint = True
