@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+import random
+import time
+
 from sopel import module
 
 
@@ -44,3 +47,10 @@ def federer4(bot, trigger):
     if bot.memory.get('federer') == 3:
         bot.say("Si c'est ça encore ça va...")
         bot.memory['federer'] = 0
+
+@module.rule(r".*\bdes armes\s*[!?.:;]*$")
+def aroulettes(bot, trigger):
+    bot.say("À ROULEEEEETTES !!")
+    if random.random() < 0.33:
+        time.sleep(2.0)
+        bot.say("HOULA... J'l'ai un peu trop gueulé ça, non ?")
