@@ -3,7 +3,7 @@
 # \file cryptomacron.py
 # \brief TODO
 # \author Florent Guiotte <florent.guiotte@gmail.com>
-# \version 0.1
+# \version 0.2
 # \date 17 sept. 2017
 #
 # TODO details
@@ -15,7 +15,7 @@ import operator
 from sopel import module
 
 _starter = {'EUR' : 10000}
-_nbcurrency = 5
+_nbcurrency = 100
 _refresh_delay = 300
 
 # HUD palette
@@ -24,13 +24,27 @@ class CMColor:
     good = '\x0311'
     bad = '\x0304'
 
+def setup(bot):
+    """Setup needed to patch memory structure when module is upgraded"""
+
+    # v0.1 to v0.2
+    rates = bot.memory.get('crypto_rates_cm', ({}, 0))
+    if not isinstance(rates[0], dict):
+        bot.memory['crypto_rates_cm'] = ({}, 0)
+
+def get_rates_from_coinmarket(nbcurrency=10):
+    new_rates = requests.get('https://api.coinmarketcap.com/v1/ticker/?convert=EUR&limit='+str(nbcurrency)).json()
+    dic_rates = dict()
+    for rate in new_rates:
+        dic_rates[rate['symbol']] = rate
+    return dic_rates
+
 def get_rates(bot):
-    last_rates = bot.memory.get('crypto_rates_cm', ([], 0))
-    # TODO: create a strategy to get rates without UI delay
+    last_rates = bot.memory.get('crypto_rates_cm', ({}, 0))
     if time.time() - last_rates[1] > _refresh_delay:
-        #bot.say("Updating rates, gimme a sec or two.")
-        last_rates = (requests.get('https://api.coinmarketcap.com/v1/ticker/?convert=EUR&limit='+str(_nbcurrency)).json(), time.time())
-    bot.memory['crypto_rates_cm'] = last_rates
+        new_rates  = last_rates[0]
+        new_rates.update(get_rates_from_coinmarket(_nbcurrency))
+        bot.memory['crypto_rates_cm'] = (new_rates, time.time())
     return last_rates[0]
 
 def get_wallet(bot, trigger):
@@ -42,9 +56,8 @@ def get_wallet(bot, trigger):
     return wallets[nick]
 
 def get_curr(rates, curr):
-    for c in rates:
-        if c['symbol'] == curr:
-            return c
+    if curr in rates:
+        return rates[curr]
 
 def transaction(wallet, rates, curr, amnt):
     currency = get_curr(rates, curr)
@@ -169,6 +182,7 @@ if __name__ == "__main__":
 
     bot = Bot()
     trg = Trigger('kara')
+    setup(bot)
 
     # Frick
     trgf = Trigger('frick')
