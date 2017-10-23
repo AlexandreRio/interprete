@@ -124,7 +124,7 @@ def high_scores(bot, trigger):
 
     line = list()
     for k, v in sorted_scores:
-        score = starter - v
+        score = v - starter
         if score >= 0:
             line.append('{}: {color.good}{:+.0f}{color.reset} €'.format(k, score, color=CMColor))
         else:
