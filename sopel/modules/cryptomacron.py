@@ -8,10 +8,12 @@
 #
 # TODO details
 
+import re
 import time
 import requests
-import collections
 import operator
+import collections
+import math as m
 from sopel import module
 
 _starter = {'EUR' : 10000}
@@ -59,11 +61,15 @@ def get_curr(rates, curr):
     if curr in rates:
         return rates[curr]
 
-def transaction(wallet, rates, curr, amnt):
+def transaction(wallet, rates, curr, amnt, unit=None):
     currency = get_curr(rates, curr)
     if currency is None:
         return 'Unknown currency'
     value = float(currency['price_eur'])
+    if amnt is 'all':
+        amnt = m.floor(wallet['EUR'] / value)
+    if unit is 'EUR':
+        amnt = m.floor(amnt / value)
     if amnt * value > wallet['EUR']:
         return 'You don\'t have enough €€€'
     if amnt + wallet.get(curr, 0) < 0:
@@ -74,7 +80,10 @@ def transaction(wallet, rates, curr, amnt):
         wallet[curr] += amnt
         if wallet[curr] == 0: wallet.pop(curr)
     wallet['EUR'] -= amnt * value
-    return 'Done'
+    if amnt >= 0:
+        return 'You bought {} {} for {:.2f} EUR'.format(amnt, curr, amnt * value)
+    else:
+        return 'You sold {} {} for {:.2f} EUR'.format(-amnt, curr, -amnt * value)
 
 @module.commands('wallet')
 def wallet_cm(bot, trigger):
@@ -104,17 +113,30 @@ def buy_sell_cm(bot, trigger):
         bot.say("wrong input m8")
         return
 
-    try:
-        amnt = int(args[1])
-        if amnt <= 0 : raise ValueError('qweqweqwe')
-    except ValueError:
-        bot.say("wrong value input m8")
-        return
+    """ yeay1 user inputs """
+    elist = ['e', '€', 'EUR']
+    regex = re.compile('({})'.format(')|('.join(elist)), re.IGNORECASE)
+    amnt = None
+    unit = None
+    if args[1].startswith('all'):
+        amnt = 'all'
+    else:
+        amnt = args[1]
+        if regex.search(args[1]):
+            amnt= amnt.strip(''.join(elist))
+            unit = 'EUR'
+            bot.say('EIR AMNT:'+str(amnt))
+        try:
+            amnt = int(amnt)
+            if amnt <= 0 : raise ValueError('qweqweqwe')
+        except ValueError:
+            bot.say("wrong value input m8")
+            return
+        amnt *= 1 + (args[0] == '.sell') * -2 # fuck ternary operators
 
-    amnt *= 1 + (args[0] == '.sell') * -2 # fuck ternary operators
     curr = args[2].upper()
 
-    ret = transaction(wallet, rates, curr, amnt)
+    ret = transaction(wallet, rates, curr, amnt, unit)
     bot.say(trigger.nick + ": "+ ret)
 
 @module.commands('traders')
