@@ -18,6 +18,12 @@ _starter = {'EUR' : 10000}
 _nbcurrency = 5
 _refresh_delay = 300
 
+# HUD palette
+class CMColor:
+    reset = '\x03'
+    good = '\x0311'
+    bad = '\x0304'
+
 def get_rates(bot):
     last_rates = bot.memory.get('crypto_rates_cm', ([], 0))
     # TODO: create a strategy to get rates without UI delay
@@ -102,6 +108,7 @@ def buy_sell_cm(bot, trigger):
 def high_scores(bot, trigger):
     wallets = bot.memory.get('wallets', {})
     rates = get_rates(bot)
+    starter = _starter['EUR']
 
     scores = dict()
     for player, wallet in wallets.items():
@@ -117,6 +124,66 @@ def high_scores(bot, trigger):
 
     line = list()
     for k, v in sorted_scores:
-        line.append('{}: {}'.format(k, v))
+        score = starter - v
+        if score >= 0:
+            line.append('{}: {color.good}{:+.0f}{color.reset} €'.format(k, score, color=CMColor))
+        else:
+            line.append('{}: {color.bad}{:+.0f}{color.reset} €'.format(k, score, color=CMColor))
 
     bot.say(' | '.join(line))
+
+if __name__ == "__main__":
+    import readline
+    import atexit
+
+    histfile = ".python_history"
+    try:
+        readline.read_history_file(histfile)
+        h_len = readline.get_current_history_length()
+    except FileNotFoundError:
+        open(histfile, 'wb').close()
+        h_len = 0
+
+    def save(prev_h_len, histfile):
+        new_h_len = readline.get_current_history_length()
+        readline.set_history_length(1000)
+        readline.append_history_file(new_h_len - prev_h_len, histfile)
+    atexit.register(save, h_len, histfile)
+
+    class Bot:
+        def __init__(self):
+            self.memory = dict()
+
+        def say(self, msg):
+            print("[Bot] {}".format(msg))
+
+    class Trigger:
+        def __init__(self, nick):
+            self.nick = nick
+
+        def post(self, msg):
+            self.msg = msg
+
+        def split(self):
+            return self.msg.split()
+
+    bot = Bot()
+    trg = Trigger('kara')
+
+    # Frick
+    trgf = Trigger('frick')
+    trgf.post('.wallet')
+    wallet_cm(bot, trgf)
+    trgf.post('.buy 1 btc')
+    buy_sell_cm(bot, trgf)
+
+    read = str()
+    while not read.startswith('.quit'):
+        trg.post(read)
+        if read.startswith('.wallet'):
+            wallet_cm(bot, trg)
+        elif read.startswith('.buy') or read.startswith('.sell'):
+            buy_sell_cm(bot, trg)
+        elif read.startswith('.traders'):
+            high_scores(bot, trg)
+        read = input('> ')
