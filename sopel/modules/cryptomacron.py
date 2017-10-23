@@ -14,7 +14,6 @@ import json
 import requests
 import operator
 import collections
-import ipdb
 import math as m
 from sopel import module
 
@@ -29,6 +28,7 @@ class CMColor:
     good = '\x0311'
     bad = '\x0304'
 
+@module.interval(60*60*24)
 def save_on_disk(bot):
     """ save a complete history on a dict{time: {'wallets': w, 'crypto_rates_cm': r}} """
     wallets = bot.memory.get('wallets', {})
@@ -45,7 +45,7 @@ def save_on_disk(bot):
     save[time.time()] = {'wallets': wallets, 'crypto_rates_cm': rates}
     with open(_savefile, 'w') as f:
         json.dump(save, f)
-    bot.say('SAVED')
+    bot.say('CryptoMacron backed up')
 
 def load_on_disk(bot):
     try:
@@ -56,6 +56,7 @@ def load_on_disk(bot):
 
     last_save = save[sorted(save)[-1]]
     bot.memory.update(last_save)
+    bot.say('CryptoMacron backup successfully loaded from disk')
 
 def setup(bot):
     """Setup needed to patch memory structure when module is upgraded"""
@@ -65,6 +66,10 @@ def setup(bot):
     if not isinstance(rates[0], dict):
         bot.say('CryptoMacron hot patch applied')
         bot.memory['crypto_rates_cm'] = ({}, 0)
+
+    # bot crash
+    if bot.memory.get('crypto_rates_cm', ({}, 0))[1] == 0:
+        load_on_disk(bot)
 
 def get_rates_from_coinmarket(nbcurrency=10):
     new_rates = requests.get('https://api.coinmarketcap.com/v1/ticker/?convert=EUR&limit='+str(nbcurrency)).json()
@@ -98,19 +103,21 @@ def transaction(wallet, rates, curr, amnt, unit=None):
     if currency is None:
         return 'Unknown currency'
     value = float(currency['price_eur'])
-    if amnt is 'all':
+    if amnt == 'all':
         amnt = m.floor(wallet['EUR'] / value)
+    if amnt == '-all':
+        amnt = -wallet.get(curr, 0)
     if unit is 'EUR':
         amnt = m.floor(amnt / value)
     if amnt * value > wallet['EUR']:
-        return 'You don\'t have enough €€€'
+        return 'You don\'t have enough money'
     if amnt + wallet.get(curr, 0) < 0:
         return 'You don\'t have enough ' + curr
     if not curr in wallet:
         wallet[curr] = amnt
     else:
         wallet[curr] += amnt
-        if wallet[curr] == 0: wallet.pop(curr)
+    if wallet[curr] == 0: wallet.pop(curr)
     wallet['EUR'] -= amnt * value
     if amnt >= 0:
         return 'You bought {} {} for {:.2f} EUR'.format(amnt, curr, amnt * value)
@@ -152,6 +159,8 @@ def buy_sell_cm(bot, trigger):
     unit = None
     if args[1].startswith('all'):
         amnt = 'all'
+        if args[0] == '.sell':
+            amnt = '-all'
     else:
         amnt = args[1]
         if regex.search(args[1]):
