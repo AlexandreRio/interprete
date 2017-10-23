@@ -10,12 +10,15 @@
 
 import re
 import time
+import json
 import requests
 import operator
 import collections
+import ipdb
 import math as m
 from sopel import module
 
+_savefile = './cryptomacron_save.json'
 _starter = {'EUR' : 10000}
 _nbcurrency = 100
 _refresh_delay = 300
@@ -26,12 +29,41 @@ class CMColor:
     good = '\x0311'
     bad = '\x0304'
 
+def save_on_disk(bot):
+    """ save a complete history on a dict{time: {'wallets': w, 'crypto_rates_cm': r}} """
+    wallets = bot.memory.get('wallets', {})
+    # just refresh rates, but save memory (rates, time)
+    get_rates(bot)
+    rates = bot.memory.get('crypto_rates_cm', {})
+
+    save = dict()
+    try:
+        with open(_savefile, 'r') as f:
+            save = json.load(f)
+    except:
+        pass
+    save[time.time()] = {'wallets': wallets, 'crypto_rates_cm': rates}
+    with open(_savefile, 'w') as f:
+        json.dump(save, f)
+    bot.say('SAVED')
+
+def load_on_disk(bot):
+    try:
+        with open(_savefile, 'r') as f:
+            save = json.load(f)
+    except:
+        return
+
+    last_save = save[sorted(save)[-1]]
+    bot.memory.update(last_save)
+
 def setup(bot):
     """Setup needed to patch memory structure when module is upgraded"""
 
     # v0.1 to v0.2
     rates = bot.memory.get('crypto_rates_cm', ({}, 0))
     if not isinstance(rates[0], dict):
+        bot.say('CryptoMacron hot patch applied')
         bot.memory['crypto_rates_cm'] = ({}, 0)
 
 def get_rates_from_coinmarket(nbcurrency=10):
@@ -94,7 +126,7 @@ def wallet_cm(bot, trigger):
     total = v
     line.append("{}: {:.2f}".format(k,v))
     for k, v in sorted(wallet.items()):
-        if k is not 'EUR':
+        if not 'EUR' in k:
             currency = get_curr(rates, k)
             value = float(currency['price_eur'])
             total += v * value
@@ -125,7 +157,6 @@ def buy_sell_cm(bot, trigger):
         if regex.search(args[1]):
             amnt= amnt.strip(''.join(elist))
             unit = 'EUR'
-            bot.say('EIR AMNT:'+str(amnt))
         try:
             amnt = int(amnt)
             if amnt <= 0 : raise ValueError('qweqweqwe')
@@ -139,22 +170,25 @@ def buy_sell_cm(bot, trigger):
     ret = transaction(wallet, rates, curr, amnt, unit)
     bot.say(trigger.nick + ": "+ ret)
 
+def get_scores(wallets, rates):
+    scores = dict()
+    for player, wallet in wallets.items():
+        totalv = wallet['EUR']
+        for k, v in sorted(wallet.items()):
+            if not 'EUR' in k:
+                currency = get_curr(rates, k)
+                value = float(currency['price_eur'])
+                totalv += v * value
+        scores[player] = totalv
+    return scores
+
 @module.commands('traders')
 def high_scores(bot, trigger):
     wallets = bot.memory.get('wallets', {})
     rates = get_rates(bot)
     starter = _starter['EUR']
 
-    scores = dict()
-    for player, wallet in wallets.items():
-        totalv = wallet['EUR']
-        for k, v in sorted(wallet.items()):
-            if k is not 'EUR':
-                currency = get_curr(rates, k)
-                value = float(currency['price_eur'])
-                totalv += v * value
-        scores[player] = totalv
-
+    scores = get_scores(wallets, rates)
     sorted_scores = sorted(scores.items(), key=operator.itemgetter(1), reverse=True)
 
     line = list()
@@ -222,4 +256,8 @@ if __name__ == "__main__":
             buy_sell_cm(bot, trg)
         elif read.startswith('.traders'):
             high_scores(bot, trg)
+        elif read.startswith('.save'):
+            save_on_disk(bot)
+        elif read.startswith('.load'):
+            load_on_disk(bot)
         read = input('> ')
