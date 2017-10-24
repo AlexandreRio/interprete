@@ -64,8 +64,8 @@ def setup(bot):
     # v0.1 to v0.2
     rates = bot.memory.get('crypto_rates_cm', ({}, 0))
     if not isinstance(rates[0], dict):
-        bot.say('CryptoMacron hot patch applied')
         bot.memory['crypto_rates_cm'] = ({}, 0)
+        bot.say('CryptoMacron hot patch applied', bot.config.core.owner)
 
     # bot crash
     if bot.memory.get('crypto_rates_cm', ({}, 0))[1] == 0:
