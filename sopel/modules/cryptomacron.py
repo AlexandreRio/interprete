@@ -17,7 +17,7 @@ import collections
 import math as m
 from sopel import module
 
-_savefile = './cryptomacron_save.json'
+_savefile = '.sopel/cryptomacron_save.json'
 _starter = {'EUR' : 10000}
 _nbcurrency = 100
 _refresh_delay = 300
@@ -45,7 +45,7 @@ def save_on_disk(bot):
     save[time.time()] = {'wallets': wallets, 'crypto_rates_cm': rates}
     with open(_savefile, 'w') as f:
         json.dump(save, f)
-    bot.say('CryptoMacron backed up')
+    bot.say('CryptoMacron backed up', bot.config.core.owner)
 
 def load_on_disk(bot):
     try:
@@ -56,7 +56,7 @@ def load_on_disk(bot):
 
     last_save = save[sorted(save)[-1]]
     bot.memory.update(last_save)
-    bot.say('CryptoMacron backup successfully loaded from disk')
+    bot.say('CryptoMacron backup successfully loaded from disk', bot.config.core.owner)
 
 def setup(bot):
     """Setup needed to patch memory structure when module is upgraded"""
