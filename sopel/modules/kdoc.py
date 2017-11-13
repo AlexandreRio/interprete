@@ -94,12 +94,12 @@ def kdoc(bot, trigger):
             # 'RRULE' : vRecur({'FREQ' : ['WEEKLY']})
             if (type(begin) is not datetime):
                 now = datetime.now(timezone('Europe/Paris')).date()
-                if (timedelta(days=0) < (begin - now) < timedelta(days=10)):
+                if (timedelta(days=0) < (begin - now) < timedelta(days=20)):
                     printAllDayEvent(bot, component, begin, now)
                     hasPrint = True
             else:
                 begin = begin.astimezone(timezone('Europe/Paris'))
-                if (timedelta(days=0) < (begin - now) < timedelta(days=10)):
+                if (timedelta(days=0) < (begin - now) < timedelta(days=20)):
                     printEvent(bot, component, begin, now)
                     hasPrint = True
 
