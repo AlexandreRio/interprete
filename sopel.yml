@@ -3,6 +3,6 @@ version: '2'
 services:
   sopel:
     restart: on-failure:5
-    image: boxbox/sopel:latest
+    image: interprete:latest
     volumes:
       - ./sopel/:/home/sopel/.sopel
