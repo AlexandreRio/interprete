@@ -7,7 +7,7 @@ RUN apt-get install -y libenchant1c2a
 RUN useradd -m -d /home/sopel sopel
 WORKDIR /home/sopel
 
-RUN pip install IPython icalendar
+RUN pip install IPython icalendar BeautifulSoup4 lxml
 RUN pip install git+https://github.com/sopel-irc/sopel.git
 
 VOLUME /home/sopel/.sopel

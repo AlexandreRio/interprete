@@ -3,6 +3,7 @@ version: '2'
 services:
   sopel:
     restart: on-failure:5
+    build: dockerfile
     image: interprete:latest
     volumes:
       - ./sopel/:/home/sopel/.sopel
