@@ -97,4 +97,5 @@ def epenis(bot, trigger):
     for c in range(0, i):
         p += ' '
     p += '~'
+	bot.say(p)
 
