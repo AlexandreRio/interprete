@@ -84,16 +84,18 @@ def fusion(bot, trigger):
 def epenis(bot, trigger):
     a = ['(_)_)', 'B', '8', '&']
     b = [':', '=', '#']
-    c = ['>', 'D']
-    p = random.choice(a)
+    c = ['>', 'D', 'D']
+    p = choice(a)
     i = np.random.binomial(100, .06)
     bb = choice(b)
-    for c in range(0, i):
+    for cpt in range(0, i):
         p += bb
 
+    cc = choice(c)
+    print(cc)
     p += choice(c)
 
-    i = 0 # will be rand when kara deliver
+    i = 0  # will be rand when kara deliver
     for c in range(0, i):
         p += ' '
     p += '~'
