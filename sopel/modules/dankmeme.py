@@ -2,6 +2,7 @@
 from sopel import module
 from random import randint,sample,choice
 import time
+import numpy as np
 
 @module.rule('.*lenny.*')
 def lenny(bot, trigger):
