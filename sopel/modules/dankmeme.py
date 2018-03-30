@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*/
 from sopel import module
-from random import randint,sample 
+from random import randint,sample,choice
 import time
 
 @module.rule('.*lenny.*')
@@ -87,11 +87,11 @@ def epenis(bot, trigger):
     c = ['>', 'D']
     p = random.choice(a)
     i = np.random.binomial(100, .06)
-    bb = random.choice(b)
+    bb = choice(b)
     for c in range(0, i):
         p += bb
 
-    p += random.choice(c)
+    p += choice(c)
 
     i = 0 # will be rand when kara deliver
     for c in range(0, i):
