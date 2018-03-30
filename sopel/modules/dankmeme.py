@@ -79,3 +79,22 @@ def fusion(bot, trigger):
     b = '☞ﾟ∀ﾟ☞ﾟ∀ﾟ☜'
     r = ''.join(sample(b, len(b)))
     bot.say(s + r + ')ᶰʸᵉᶫᶫᵒʷ')
+	
+@module.commands('epenis')
+def epenis(bot, trigger):
+	a = ['(_)_)', 'B', '8', '&']
+    b = [':', '=', '#']
+    c = ['>', 'D']
+    p = random.choice(a)
+    i = np.random.binomial(100, .06)
+    bb = random.choice(b)
+    for c in range(0, i):
+        p += bb
+
+    p += random.choice(c)
+
+    i = 0 # will be rand when kara deliver
+    for c in range(0, i):
+        p += ' '
+    p += '~'
+
