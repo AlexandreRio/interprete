@@ -82,7 +82,7 @@ def fusion(bot, trigger):
 	
 @module.commands('epenis')
 def epenis(bot, trigger):
-	a = ['(_)_)', 'B', '8', '&']
+    a = ['(_)_)', 'B', '8', '&']
     b = [':', '=', '#']
     c = ['>', 'D']
     p = random.choice(a)
@@ -97,5 +97,5 @@ def epenis(bot, trigger):
     for c in range(0, i):
         p += ' '
     p += '~'
-	bot.say(p)
+    bot.say(p)
 
