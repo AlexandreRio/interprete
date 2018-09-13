@@ -14,5 +14,17 @@ import re
 
 @module.commands('nsa')
 def vote(bot, trigger):
-    where = request.urlopen("https://whereis.alexrio.fr/").read().decode("utf-8")
-    bot.say(re.sub(r'^I\'m ', 'salvatoreG is ', re.sub(r'^I ','salvatoreG ', where)))
+    args = trigger.split()
+    if len(args) > 1:
+      if args[1] == 'kara':
+        bot.say('he must be sleeping ¯\_(ツ)_/¯')
+      elif args[1] == 'salvatoreG':
+        queryServer(bot)
+      else:
+        bot.say('Hey, I don\'t know ' + ''.join(args[1:]))
+    else:
+      queryServer(bot)
+
+def queryServer(bot):
+      where = request.urlopen("https://whereis.alexrio.fr/").read().decode("utf-8")
+      bot.say(re.sub(r'^I\'m ', 'salvatoreG is ', re.sub(r'^I ','salvatoreG ', where)))
