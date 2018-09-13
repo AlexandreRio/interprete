@@ -63,6 +63,16 @@ def kdoc_setup(bot, trigger):
 @module.commands('kdoc')
 def kdoc(bot, trigger):
     """Show #esir calendar next events, see .kdoc_setup"""
+    args = trigger.split()
+    if len(args) > 1 and args[1].isdigit():
+      delta_days = int(args[1])
+    else:
+      delta_days = 20
+
+    if delta_days > 90 or delta_days < 0 :
+      bot.say("Don't even think about it")
+      return
+
     lastseenpath = ".sopel/" + lastseen
     lastget = 0
     if os.path.isfile(lastseenpath):
@@ -94,12 +104,12 @@ def kdoc(bot, trigger):
             # 'RRULE' : vRecur({'FREQ' : ['WEEKLY']})
             if (type(begin) is not datetime):
                 now = datetime.now(timezone('Europe/Paris')).date()
-                if (timedelta(days=0) < (begin - now) < timedelta(days=20)):
+                if (timedelta(days=0) < (begin - now) < timedelta(days=delta_days)):
                     printAllDayEvent(bot, component, begin, now)
                     hasPrint = True
             else:
                 begin = begin.astimezone(timezone('Europe/Paris'))
-                if (timedelta(days=0) < (begin - now) < timedelta(days=20)):
+                if (timedelta(days=0) < (begin - now) < timedelta(days=delta_days)):
                     printEvent(bot, component, begin, now)
                     hasPrint = True
 
