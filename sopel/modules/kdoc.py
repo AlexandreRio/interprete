@@ -13,7 +13,8 @@ from sopel import module
 os.environ['TZ'] = 'Europe/Paris'
 #TODO: install appropriate locale on the image
 #locale.setlocale(locale.LC_ALL, 'fr_FR.UTF-8')
-remote_cal = "https://kdoc.guiotte.fr/remote.php/dav/public-calendars/5Q08PCZSSLP9Q2GQ?export"
+#remote_cal = "https://kdoc.guiotte.fr/remote.php/dav/public-calendars/5Q08PCZSSLP9Q2GQ?export"
+remote_cal = "http://zimbra.inria.fr/home/alexandre.rio@irisa.fr/Calendar"
 local_cal = "calendar.ics"
 lastseen = "lastseen.txt"
 edit_url="https://kdoc.guiotte.fr/remote.php/dav/calendars/esir/esir_shared_by_florent/"
@@ -64,6 +65,9 @@ def kdoc_setup(bot, trigger):
 
 @module.commands('kdoc')
 def kdoc(bot, trigger):
+    bot.say("kdoc est cassé, il faut vois ça avec kara")
+
+def old(bot, trigger):
     """Show #esir calendar next events, see .kdoc_setup"""
     args = trigger.split()
     if len(args) > 1 and args[1].isdigit():
