@@ -1,4 +1,5 @@
 import urllib.request
+import collections
 import calendar
 import os
 #import locale
@@ -35,15 +36,16 @@ def strmecomponent(component, wat, ifnone=''):
             nstr = nstr + ", " + e
         return nstr
 
-def printEvent(bot, component, begin, now):
+def createEvent(component, begin, now):
     location = component.get('location')
     localstr = location if location is not None else ''
     s = "* Le " + begin.strftime("\x02%A %d\x0F à %Hh%M") +  " (dans " + strfdelta(begin-now,"{days} jours et {hours}h et {minutes} minutes") + "): " + strfdetails(component, "\x02\x0304{summary}\x0F, {location} [\x0312{categories}\x03]")
-    bot.say (s)
+    return s
 
-def printAllDayEvent(bot, component, begin, now):
+
+def createAllDayEvent(component, begin, now):
     s = "* Le " + begin.strftime("\x02%A %d\x0F") +  " (dans " + strfdelta(begin-now,"{days} jours") + "): " + strfdetails(component, "\x02\x0304{summary}\x0F, {location} [\x0312{categories}\x03]")
-    bot.say (s)
+    return s
 
 def strfdetails(component, fmt):
     d = {"summary":    strmecomponent(component, "summary", "Untitled") }
@@ -93,7 +95,7 @@ def kdoc(bot, trigger):
     g = open(local_cal,'rb')
     gcal = Calendar.from_ical(g.read())
 
-    hasPrint = False
+    eventDict = dict()
     for component in gcal.walk():
         if component.name == "VEVENT":
             now = datetime.now(timezone('Europe/Paris'))
@@ -104,18 +106,22 @@ def kdoc(bot, trigger):
             # 'RRULE' : vRecur({'FREQ' : ['WEEKLY']})
             if (type(begin) is not datetime):
                 now = datetime.now(timezone('Europe/Paris')).date()
+                newKey = datetime.combine(begin, datetime.min.time()).astimezone(timezone('Europe/Paris'))
                 if (timedelta(days=0) < (begin - now) < timedelta(days=delta_days)):
-                    printAllDayEvent(bot, component, begin, now)
-                    hasPrint = True
+                    if not begin in eventDict:
+                        eventDict[newKey] = list()
+                    eventDict[newKey].append(createAllDayEvent(component, begin, now))
             else:
                 begin = begin.astimezone(timezone('Europe/Paris'))
                 if (timedelta(days=0) < (begin - now) < timedelta(days=delta_days)):
-                    printEvent(bot, component, begin, now)
-                    hasPrint = True
+                    if not begin in eventDict:
+                       eventDict[begin] = list()
+                    eventDict[begin].append(createEvent(component, begin, now))
+    g.close()
 
-
-
-            g.close()
-
-    if not hasPrint:
+    if not eventDict:
         bot.say("No upcoming events, sorry")
+    else:
+        for k,v in enumerate(dict(sorted(eventDict.items()))):
+          for ev in eventDict[v]:
+            bot.say(str(ev))
