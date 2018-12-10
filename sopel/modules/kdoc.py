@@ -13,13 +13,29 @@ from sopel import module
 os.environ['TZ'] = 'Europe/Paris'
 #TODO: install appropriate locale on the image
 #locale.setlocale(locale.LC_ALL, 'fr_FR.UTF-8')
-#remote_cal = "https://kdoc.guiotte.fr/remote.php/dav/public-calendars/5Q08PCZSSLP9Q2GQ?export"
-remote_cal = "http://zimbra.inria.fr/home/alexandre.rio@irisa.fr/Calendar"
+#old_remote_cal = "https://kdoc.guiotte.fr/remote.php/dav/public-calendars/5Q08PCZSSLP9Q2GQ?export"
+remote_cal="https://kdoc.guiotte.fr/remote.php/dav/public-calendars/ntBJnrbGsgRJqEWc?export"
 local_cal = "calendar.ics"
 lastseen = "lastseen.txt"
 edit_url="https://kdoc.guiotte.fr/remote.php/dav/calendars/esir/esir_shared_by_florent/"
 edit_user="esir"
 edit_pass="yackisafaggot"
+
+def removeVTIMEZONEBlock(f):
+  ical = str("")
+  match = False
+  for line in f.readlines():
+    if 'BEGIN:VTIMEZONE' in line:
+      match = True
+
+    if not match:
+      ical += line
+
+    if 'END:VTIMEZONE' in line:
+      match = False
+
+  return ical
+
 
 def strfdelta(tdelta, fmt):
     d = {"days": tdelta.days}
@@ -63,10 +79,11 @@ def kdoc_setup(bot, trigger):
     bot.say("To edit the calendar use a CalDAV/iCalendar client with this info:")
     bot.say("url: " + edit_url + " user: " + edit_user + " pass: " + edit_pass)
 
-@module.commands('kdoc')
+@module.commands('old_kdoc')
 def kdoc(bot, trigger):
     bot.say("kdoc est cassé, il faut vois ça avec kara")
 
+@module.commands('kdoc')
 def old(bot, trigger):
     """Show #esir calendar next events, see .kdoc_setup"""
     args = trigger.split()
@@ -96,8 +113,8 @@ def old(bot, trigger):
         f.close()
 
 
-    g = open(local_cal,'rb')
-    gcal = Calendar.from_ical(g.read())
+    g = open(local_cal,'r')
+    gcal = Calendar.from_ical(removeVTIMEZONEBlock(g))
 
     eventDict = dict()
     for component in gcal.walk():
