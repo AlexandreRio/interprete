@@ -16,7 +16,7 @@ def shrug(bot, trigger):
 def dealwithit(bot, trigger):
     bot.say('☞   ͜ʖ  ☞')
 
-@module.rule('.*dwi.*')
+@module.rule('dwi')
 def dwi(bot, trigger):
     bot.say('(⌐■_■)')
 
@@ -41,7 +41,7 @@ def gne(bot, trigger):
 def ftt(bot, trigger):
     bot.say('(╯°□°）╯︵ ┻━┻')
 
-@module.rule('.*RA+GE.*')
+@module.rule('RA+GE')
 def rage(bot,trigger):
     bot.say(' ┻━┻︵ \(°□°)/ ︵ ┻━┻')
 
@@ -80,7 +80,7 @@ def fusion(bot, trigger):
     b = '☞ﾟ∀ﾟ☞ﾟ∀ﾟ☜'
     r = ''.join(sample(b, len(b)))
     bot.say(s + r + ')ᶰʸᵉᶫᶫᵒʷ')
-	
+
 @module.commands('epenis')
 def epenis(bot, trigger):
     a = ['(_)_)', 'B', '8', '&']
