@@ -60,7 +60,7 @@ def createEvent(component, begin, now):
 
 
 def createAllDayEvent(component, begin, now):
-    s = "* Le " + begin.strftime("\x02%A %d\x0F") +  " (dans " + strfdelta(begin-now,"{days} jours") + "): " + strfdetails(component, "\x02\x0304{summary}\x0F, {location} [\x0312{categories}\x03]")
+    s = "‣ Le " + begin.strftime("\x02%A %d\x0F") +  " (dans " + strfdelta(begin-now,"{days} jours") + "): " + strfdetails(component, "\x02\x0304{summary}\x0F, {location} [\x0312{categories}\x03]")
     return s
 
 def strfdetails(component, fmt):
