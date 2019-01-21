@@ -13,8 +13,7 @@ from sopel import module
 os.environ['TZ'] = 'Europe/Paris'
 #TODO: install appropriate locale on the image
 #locale.setlocale(locale.LC_ALL, 'fr_FR.UTF-8')
-#old_remote_cal = "https://kdoc.guiotte.fr/remote.php/dav/public-calendars/5Q08PCZSSLP9Q2GQ?export"
-remote_cal="https://kdoc.guiotte.fr/remote.php/dav/public-calendars/ntBJnrbGsgRJqEWc?export"
+remote_cal="http://kdoc.guiotte.fr/remote.php/dav/public-calendars/QocpFySiCPRzyrx4?export"
 local_cal = "calendar.ics"
 lastseen = "lastseen.txt"
 edit_url="https://kdoc.guiotte.fr/remote.php/dav/calendars/esir/esir_shared_by_florent/"
@@ -56,7 +55,7 @@ def strmecomponent(component, wat, ifnone=''):
 def createEvent(component, begin, now):
     location = component.get('location')
     localstr = location if location is not None else ''
-    s = "* Le " + begin.strftime("\x02%A %d\x0F à %Hh%M") +  " (dans " + strfdelta(begin-now,"{days} jours et {hours}h et {minutes} minutes") + "): " + strfdetails(component, "\x02\x0304{summary}\x0F, {location} [\x0312{categories}\x03]")
+    s = "‣ Le " + begin.strftime("\x02%A %d\x0F à %Hh%M") +  " (dans " + strfdelta(begin-now,"{days} jours et {hours}h et {minutes} minutes") + "): " + strfdetails(component, "\x02\x0304{summary}\x0F, {location} [\x0312{categories}\x03]")
     return s
 
 
