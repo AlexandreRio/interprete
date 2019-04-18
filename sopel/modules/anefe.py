@@ -12,3 +12,11 @@ def anefe(bot, trigger):
 @module.rule('.*certes.*')
 def certes(bot, trigger):
   bot.say('anéfé')
+
+@module.rule('.*soldat.*')
+def soldat(bot, trigger):
+  bot.say('✋')
+
+@module.rule(r".*est( plutôt)? fort.*")
+def pomme(bot, trigger):
+  bot.say('🍏 fort en pomme ?')

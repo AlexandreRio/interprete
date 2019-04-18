@@ -102,3 +102,7 @@ def epenis(bot, trigger):
     p += '~'
     bot.say(p)
 
+@module.commands('dab')
+def dab(bot, trigger):
+  bot.say('ヽ( •_)ᕗ')
+
