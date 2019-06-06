@@ -238,5 +238,10 @@ quotes_M = {
     'Regardez moi la jolie petite paire de fillettes, si c\'est pas fragile!',
 }
 
+
+@module.rule(r".*c'est difficile.*")
+def difficile(bot, trigger):
+    bot.say("C'est pas que c'est difficile... C'est que c'est sa mère difficile la race de sa grand mère !")
+
 # Oh ouais nan mais là, non les yeux quand même c'est dégueu.
 # Bah il y a Attila et un hun, ça fait deux.
