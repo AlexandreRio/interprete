@@ -2,7 +2,7 @@ FROM python:3
 MAINTAINER Stefan Schindler
 
 RUN apt-get update
-RUN apt-get install -y libenchant1c2a
+RUN apt-get install -y libenchant1c2a libaspell-dev
 
 RUN useradd -m -d /home/sopel sopel
 WORKDIR /home/sopel
