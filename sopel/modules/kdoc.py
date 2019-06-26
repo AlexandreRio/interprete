@@ -49,7 +49,7 @@ def strmecomponent(component, wat, ifnone=''):
     else:
         nstr = rawstr.pop()
         for e in rawstr:
-            nstr = nstr + ", " + e
+            nstr = nstr + ", " + str(e)
         return nstr
 
 def createEvent(component, begin, now):
