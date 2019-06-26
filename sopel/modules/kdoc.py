@@ -7,6 +7,7 @@ import os
 from datetime import datetime, timedelta
 from pytz import timezone
 from icalendar import Calendar, Event
+from icalendar.prop import vCategory
 
 from sopel import module
 
@@ -44,12 +45,22 @@ def strfdelta(tdelta, fmt):
 
 def strmecomponent(component, wat, ifnone=''):
     rawstr = component.get(wat)
+    if isinstance(rawstr, vCategory):
+        return str(rawstr.to_ical().decode())
+
     if not rawstr.__class__ is list:
         return rawstr if rawstr is not None else ifnone
     else:
         nstr = rawstr.pop()
+        #raw str can be a vCategory object afteral
+        if isinstance(nstr, vCategory):
+            nstr = str(nstr.to_ical().decode())
+
         for e in rawstr:
-            nstr = nstr + ", " + str(e)
+            if isinstance(e,vCategory):
+                nstr = nstr + ", " + str(e.to_ical().decode())
+            else:
+                nstr = nstr + ", " + e
         return nstr
 
 def createEvent(component, begin, now):
