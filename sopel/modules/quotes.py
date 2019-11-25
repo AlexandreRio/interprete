@@ -7,6 +7,7 @@ import random
 
 @module.commands('perceval', 'pq')
 @module.example('.perceval', 'Perceval quotes')
+@module.rule(r"<.*> \.pq")
 def perquote(bot, trigger):
     """Replies with a random quote from Perceval"""
     quote = random.choice(tuple(quotes_P))
