@@ -2,7 +2,7 @@ import urllib.request
 import collections
 import calendar
 import os
-#import locale
+import locale
 
 from datetime import datetime, timedelta
 from pytz import timezone
@@ -13,7 +13,7 @@ from sopel import module
 
 os.environ['TZ'] = 'Europe/Paris'
 #TODO: install appropriate locale on the image
-#locale.setlocale(locale.LC_ALL, 'fr_FR.UTF-8')
+locale.setlocale(locale.LC_ALL, 'fr_FR.utf8')
 remote_cal="http://kdoc.guiotte.fr/remote.php/dav/public-calendars/QocpFySiCPRzyrx4?export"
 local_cal = "calendar.ics"
 lastseen = "lastseen.txt"
@@ -66,12 +66,12 @@ def strmecomponent(component, wat, ifnone=''):
 def createEvent(component, begin, now):
     location = component.get('location')
     localstr = location if location is not None else ''
-    s = "‣ Le " + begin.strftime("\x02%A %d\x0F à %Hh%M") +  " (dans " + strfdelta(begin-now,"{days} jours et {hours}h et {minutes} minutes") + "): " + strfdetails(component, "\x02\x0304{summary}\x0F, {location} [\x0312{categories}\x03]")
+    s = "‣ Le " + begin.strftime("\x02%A %d %B\x0F à %Hh%M") +  " (dans " + strfdelta(begin-now,"{days} jours et {hours}h et {minutes} minutes") + "): " + strfdetails(component, "\x02\x0304{summary}\x0F, {location} [\x0312{categories}\x03]")
     return s
 
 
 def createAllDayEvent(component, begin, now):
-    s = "‣ Le " + begin.strftime("\x02%A %d\x0F") +  " (dans " + strfdelta(begin-now,"{days} jours") + "): " + strfdetails(component, "\x02\x0304{summary}\x0F, {location} [\x0312{categories}\x03]")
+    s = "‣ Le " + begin.strftime("\x02%A %d %B\x0F") +  " (dans " + strfdelta(begin-now,"{days} jours") + "): " + strfdetails(component, "\x02\x0304{summary}\x0F, {location} [\x0312{categories}\x03]")
     return s
 
 def strfdetails(component, fmt):
@@ -83,7 +83,7 @@ def strfdetails(component, fmt):
     d["description"] = strmecomponent(component, "description")
     return fmt.format(**d)
 
-@module.commands('kdoc_setup')
+@module.rule('.*\.kdoc_setup.*')
 def kdoc_setup(bot, trigger):
     """Setup informations to edit #esir calendar"""
     bot.say("To edit the calendar use a CalDAV/iCalendar client with this info:")
@@ -93,7 +93,7 @@ def kdoc_setup(bot, trigger):
 def kdoc(bot, trigger):
     bot.say("kdoc est cassé, il faut vois ça avec kara")
 
-@module.commands('kdoc')
+@module.rule('.*\.kdoc.*')
 def old(bot, trigger):
     """Show #esir calendar next events, see .kdoc_setup"""
     args = trigger.split()
