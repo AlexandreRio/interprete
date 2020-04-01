@@ -29,8 +29,20 @@ def cpc_sopel(bot, trigger):
     search = ' '.join(args[1:])
     bot.say(cpc(search))
 
+def get_year(game):
+    txt = game.find('div', 'meta').get_text()
+    return re.findall('[0-9]{4}', txt)[0]
+
+def split_search(search):
+    year_re = ' \([0-9]{4}\)'
+    name = re.sub(year_re, '', search)
+    years = re.findall(year_re, search)
+    year = years[-1].strip('( )') if years else None
+    return name, year
+
 def cpc(search):
-    result = requests.get(cpc_search_url + search)
+    name, year = split_search(search)
+    result = requests.get(cpc_search_url + name)
 
     if result.status_code != 200:
         raise ConnectionError('Could not connect to ' + result.url)
@@ -41,14 +53,19 @@ def cpc(search):
     if len(games) == 0:
         return not_found_msg
 
-    game = games[-1] # Return the oldest published match
+    years = [get_year(g) for g in games]
+    if year in years:
+        game = games[years.index(year)]
+    else:
+        game = games[-1] # Return the oldest published match
 
     raw_mark = game.find('div',"ui left pointing red label").string
     mark = re.sub('\ {2,}|\n|\t', '', raw_mark).strip()
     title = game.find('a',"header").string.strip()
     desc = game.find('div', 'description').string.strip()
+    y = get_year(game)
 
-    return '{} - {} - {}'.format(title, desc, mark)
+    return '{} ({}) - {} - {}'.format(title, y, desc, mark)
 
 if __name__ == '__main__':
     import argparse
