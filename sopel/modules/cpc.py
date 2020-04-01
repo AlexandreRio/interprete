@@ -43,7 +43,7 @@ def cpc(search):
 
     game = games[-1] # Return the oldest published match
 
-    raw_mark = game.find('div',"ui left pointing red basic label").string
+    raw_mark = game.find('div',"ui left pointing red label").string
     mark = re.sub('\ {2,}|\n|\t', '', raw_mark).strip()
     title = game.find('a',"header").string.strip()
     desc = game.find('div', 'description').string.strip()
