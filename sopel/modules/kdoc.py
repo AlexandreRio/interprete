@@ -77,7 +77,7 @@ def createAllDayEvent(component, begin, now):
 def strfdetails(component, fmt):
     d = {"summary":    strmecomponent(component, "summary", "Untitled") }
     d["location"] =    strmecomponent(component, "location", "somewhere")
-    d["categories"] =  strmecomponent(component, "categories", "Arck didn't do his job")
+    d["categories"] =  strmecomponent(component, "categories", "interprot didn't do his job")
     d["uid"] =         strmecomponent(component, "uid")
     d["sequence"] =    strmecomponent(component, "sequence")
     d["description"] = strmecomponent(component, "description")
